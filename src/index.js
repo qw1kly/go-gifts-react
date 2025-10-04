@@ -93,7 +93,7 @@ throw new Error('Server error');
 const msg = await response.json();
 }
 //referal();
-authe();
+//authe();
 const ICONS = {
     1:["https://fragment.com/file/gifts/plushpepe/thumb.webp",
        "https://fragment.com/file/gifts/durovscap/thumb.webp",
@@ -245,11 +245,11 @@ async function spin(elem) {
     winner = 0;
     elem.setAttribute('disabled', true);
 
-   const response = await fetch('http://localhost:8000/spin', {
+   const response = await fetch('https://qw1kly-fastapitest-c362.twc1.net/spin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-Telegram-Init-Data': document.getElementById('hiddennigga').innerText
+                'X-Telegram-Init-Data': '9098'
             },
             body: JSON.stringify({ roullete_id: roullete_id })
         });
