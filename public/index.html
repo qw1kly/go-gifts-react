@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sloty</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+
+</head>
+<body>
+<div id="root" style="display: none;"></div>
+<div class="c100 p34 center" style="top: 400px; display: none;">
+    <span>34%</span>
+    <div class="slice">
+        <div class="bar"></div>
+        <div class="fill"></div>
+    </div>
+    <div class="arrow-container">
+            <div class="arrow" id="arrow"></div>
+        </div>
+</div>
+<div id="profile">
+    <img src="ChatGPT Image 18 сент. 2025 г., 21_20_39 1 (1).png" id="logotip"/>
+</div>
+<div id="'roullete" style="display: block;">
+    <div id="container">
+        <button id="game1">1</button>
+        <button id="game2">2</button>
+        <button id="game3">3</button>
+        <button id="game4">4</button>
+        <button id="game5">5</button>
+        <button id="game6">6</button>
+        <a id="price"></a>
+        <div class="window-border">
+            <div class="window">
+                <div class="outer-spacer"></div>
+                <div class="outer-col">
+                    <div class="col"></div>
+                </div>
+                <div class="outer-spacer"></div>
+                <div class="outer-col">
+                    <div class="col"></div>
+                </div>
+                <div class="outer-spacer"></div>
+                <div class="outer-col">
+                    <div class="col"></div>
+                </div>
+                
+                <div class="outer-spacer"></div>
+            </div>
+        </div>
+        <script src="/assets/vendor/canvas-confetti/dist/confetti.browser.js"></script>
+        <input type="button" id="asda" class="start-button" value="Spin"/>
+    </div>
+</div>
+    <div id="ton-connect"></div>
+
+
+
+
+
+
+      <div class="controls" style="display: none;">
+        <label for="degrees">Градусы:</label>
+        <input type="number" id="degrees" value="720" min="0" max="1080">
+        <button onclick="rotateArrow()">Вращать стрелку</button>
+    </div>
+
+    <script>
+        let now = 0;
+         function rotateArrow() {
+        const arrow = document.getElementById('arrow');
+        const degreesInput = document.getElementById('degrees');
+        const degrees = parseInt(degreesInput.value) + now;
+        
+        // Сбрасываем трансформацию
+        arrow.style.transition = 'none';
+        
+        // Принудительное перерисовывание
+        void arrow.offsetWidth;
+        
+        // Применяем анимацию вращения
+        arrow.style.transition = 'transform 1s ease-in-out';
+        arrow.style.transform = `translate(-50%, -100%) rotate(${degrees}deg)`;
+        
+        // После завершения анимации сбрасываем на конечное положение
+        setTimeout(() => {
+            // Вычисляем конечный угол (остаток от деления на 360)
+            const finalAngle = degrees % 360;
+            now = finalAngle
+            arrow.style.transition = 'none';
+            arrow.style.transform = `translate(-50%, -100%) rotate(${finalAngle}deg)`;
+        }, 1000);
+    }
+
+    // Инициализация при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        const arrow = document.getElementById('arrow');
+        arrow.style.transform = 'translate(-50%, -100%) rotate(0deg)';
+    });
+    </script>
+    <a id="hiddennigga" style="display: none;"></a>
+    <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+    <script>
+        let tg = Telegram.WebApp.initData;
+        document.getElementById('hiddennigga').innerText = tg;
+    </script>
+</body>
+</html>
