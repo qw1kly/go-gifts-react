@@ -245,7 +245,7 @@ async function spin(elem) {
     winner = 0;
     elem.setAttribute('disabled', true);
 
-   const response = await fetch('https://qw1kly-fastapitest-c362.twc1.net/spin', {
+   const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/spin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
