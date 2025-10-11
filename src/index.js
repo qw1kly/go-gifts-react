@@ -81,7 +81,7 @@ const response = await fetch('http://localhost:8000/auth', {
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
-'X-Telegram-Init-Data': document.getElementById('hiddennigga').innerText
+'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
 
 },
 });
@@ -135,12 +135,12 @@ const ICONS = {
           "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_069.webp", 
           "https://fragment.com/file/gifts/genielamp/thumb.webp", 
           "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_006.webp"],
-    6 : ["https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_109.webp",
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_096.webp",
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_084.webp", 
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_039.webp", 
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_107.webp", 
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_073.webp"],
+    6 : ["https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_037.webp",
+         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_032.webp",
+         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_044.webp", 
+         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_086.webp", 
+         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_072.webp", 
+         "https://fragment.com/file/gifts/durovscap/thumb.webp"],
 
 
 };
@@ -186,12 +186,12 @@ const SYMBOL_MAP = {
           4:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_069.webp", 
           5:"https://fragment.com/file/gifts/genielamp/thumb.webp", 
           6:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_006.webp"},
-    6 : {1:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_109.webp",
-         2:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_096.webp",
-         3:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_084.webp", 
-         4:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_039.webp", 
-         5:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_107.webp", 
-         6:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_073.webp"},
+    6 : {1:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_037.webp",
+         2:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_032.webp",
+         3:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_044.webp", 
+         4:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_086.webp", 
+         5:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_072.webp", 
+         6:"https://fragment.com/file/gifts/durovscap/thumb.webp"},
 };
 
 
@@ -245,11 +245,11 @@ async function spin(elem) {
     winner = 0;
     elem.setAttribute('disabled', true);
 
-   const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/spin', {
+   const response = await fetch('http://localhost:8000/spin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-Telegram-Init-Data': '9098'
+                'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
             },
             body: JSON.stringify({ roullete_id: roullete_id })
         });
@@ -292,9 +292,7 @@ async function spin(elem) {
                 }
                 });
                 await new Promise(resolve => setTimeout(resolve, 50));
-                document.getElementById("imageofwin").src = data[2];
-                document.getElementById("textofwin").innerText = data[3];
-                     
+
             }
         }
 
@@ -337,6 +335,80 @@ function getRandomIcon() {
 function randomDuration(wh_coll) {
     return (wh_coll-1) * 0.9
 }
+
+async function upgradeGift() 
+    
+
+  {const response = await fetch('http://localhost:8000/upgrade-gift', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
+            },
+            body: JSON.stringify({
+    gift: {
+        owner_id: "457835158",
+        nft_id: "2c840eb3-7bbf-4cf1-80fd-817fa17cb93a",
+        gift_name: "crystalball",
+        image_url: "https://nft.fragment.com/gift/crystalball-17746.large.jpg",
+        gift_price: 11.0,
+        timestamp: 1759929262,
+        tg_id: "CrystalBall-17746"
+    },
+    new_gift: {
+        new_gift: "bondedring"
+    }
+}),
+        });
+
+        if (!response.ok) {
+            throw new Error('Server error');
+        }
+
+      const data = await response.json();
+        
+        let now = 0;
+         function rotateArrow() {
+        const arrow = document.getElementById('arrow');
+        const degreesInput = document.getElementById('degrees');
+        const degrees = data['result'] + now;
+        
+        // Сбрасываем трансформацию
+        arrow.style.transition = 'none';
+        
+        // Принудительное перерисовывание
+        void arrow.offsetWidth;
+        
+        // Применяем анимацию вращения
+        arrow.style.transition = 'transform 1s ease-in-out';
+        arrow.style.transform = `translate(-50%, -100%) rotate(${degrees}deg)`;
+        // После завершения анимации сбрасываем на конечное положение
+        setTimeout(() => {
+            // Вычисляем конечный угол (остаток от деления на 360)
+            const finalAngle = degrees % 360;
+            now = finalAngle
+            arrow.style.transition = 'none';
+            arrow.style.transform = `translate(-50%, -100%) rotate(${finalAngle}deg)`;
+        }, 1000);
+    }
+    rotateArrow();
+}
+    // Инициализация при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        const arrow = document.getElementById('arrow');
+        arrow.style.transform = 'translate(-50%, -100%) rotate(0deg)';
+    });
+
+document.getElementById("bibo").addEventListener("click", (e) => {
+    upgradeGift();
+})
+
+
+
+
+
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
