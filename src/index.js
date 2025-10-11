@@ -62,7 +62,7 @@ const response = await fetch('http://localhost:8000/auth', {
     }
     }
 //referal();
-authe();
+//authe();
 const ICONS = {
     1:["https://fragment.com/file/gifts/plushpepe/thumb.webp",
        "https://fragment.com/file/gifts/durovscap/thumb.webp",
