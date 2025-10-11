@@ -44,7 +44,7 @@ body {
 position: relative;
 width: 44px;
 height: 45px;
-left: 23px;
+margin-left: 23px;
 top: 21px;
 margin-bottom: 600px;
 font-family: 'Poppins';
@@ -372,7 +372,7 @@ color: #FFFFFF;
 }
 .wrapper {
   display: flex;
-  margin-top: -10px;
+  margin-top: -15px;
   margin-right: 20px;
   gap: 25px;
   flex-direction: column;
