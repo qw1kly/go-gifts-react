@@ -6,9 +6,80 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <svg style="display: none">
+      <filter
+        id="glass-distortion"
+        x="0%"
+        y="0%"
+        width="100%"
+        height="100%"
+        filterUnits="objectBoundingBox"
+      >
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.01 0.01"
+          numOctaves="1"
+          seed="5"
+          result="turbulence"
+        />
+        <!-- Seeds: 14, 17,  -->
+
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+
+        <feSpecularLighting
+          in="softMap"
+          surfaceScale="5"
+          specularConstant="1"
+          specularExponent="100"
+          lighting-color="white"
+          result="specLight"
+        >
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+
+        <feComposite
+          in="specLight"
+          operator="arithmetic"
+          k1="0"
+          k2="1"
+          k3="1"
+          k4="0"
+          result="litImage"
+        />
+
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="softMap"
+          scale="150"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </svg>
+    <div id="maincont">
+        <a id="logo">GG</a>
+        <div class="wrapper">
+       
+        <div class="liquidGlass-wrapper button">
+        <div class="liquidGlass-effect"></div>
+        <div class="liquidGlass-tint"></div>
+        <div class="liquidGlass-shine"></div>
+        </div>
+        
+        </div>
+        
+    </div>
 <div id="root" style="display: none;"></div>
 <div class="c100 p34 center" style="top: 400px; display: none;">
     <span>34%</span>
@@ -20,10 +91,7 @@
             <div class="arrow" id="arrow"></div>
         </div>
 </div>
-<div id="profile">
-    <img src="ChatGPT Image 18 сент. 2025 г., 21_20_39 1 (1).png" id="logotip"/>
-</div>
-<div id="'roullete" style="display: block;">
+<div id="'roullete" style="display: none;">
     <div id="container">
         <button id="game1">1</button>
         <button id="game2">2</button>
@@ -31,8 +99,7 @@
         <button id="game4">4</button>
         <button id="game5">5</button>
         <button id="game6">6</button>
-        <img id="imageofwin" width='90' height='90'/>
-        <a id="textofwin"></a>
+        <a id="price"></a>
         <div class="window-border">
             <div class="window">
                 <div class="outer-spacer"></div>
@@ -65,47 +132,8 @@
       <div class="controls" style="display: none;">
         <label for="degrees">Градусы:</label>
         <input type="number" id="degrees" value="720" min="0" max="1080">
-        <button onclick="rotateArrow()">Вращать стрелку</button>
+        <button id="bibo">Вращать стрелку</button>
     </div>
 
-    <script>
-        let now = 0;
-         function rotateArrow() {
-        const arrow = document.getElementById('arrow');
-        const degreesInput = document.getElementById('degrees');
-        const degrees = parseInt(degreesInput.value) + now;
-        
-        // Сбрасываем трансформацию
-        arrow.style.transition = 'none';
-        
-        // Принудительное перерисовывание
-        void arrow.offsetWidth;
-        
-        // Применяем анимацию вращения
-        arrow.style.transition = 'transform 1s ease-in-out';
-        arrow.style.transform = `translate(-50%, -100%) rotate(${degrees}deg)`;
-        
-        // После завершения анимации сбрасываем на конечное положение
-        setTimeout(() => {
-            // Вычисляем конечный угол (остаток от деления на 360)
-            const finalAngle = degrees % 360;
-            now = finalAngle
-            arrow.style.transition = 'none';
-            arrow.style.transform = `translate(-50%, -100%) rotate(${finalAngle}deg)`;
-        }, 1000);
-    }
-
-    // Инициализация при загрузке
-    document.addEventListener('DOMContentLoaded', function() {
-        const arrow = document.getElementById('arrow');
-        arrow.style.transform = 'translate(-50%, -100%) rotate(0deg)';
-    });
-    </script>
-    <a id="hiddennigga" style="display: none;"></a>
-    <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
-    <script>
-        let tg = Telegram.WebApp.initData;
-        document.getElementById('hiddennigga').innerText = tg;
-    </script>
 </body>
 </html>
