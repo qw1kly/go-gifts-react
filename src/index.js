@@ -34,66 +34,35 @@ let index_icons = 1;
 let roullete_id = 1;
 
 
-let bttn1 = document.getElementById("game1");
-bttn1.addEventListener("click", (e) => {
-    index_icons = 1;
-    roullete_id = 1;
-    setInitialItems();
-});
-
-let bttn2 = document.getElementById("game2");
-bttn2.addEventListener("click", (e) => {
-    index_icons = 2;
-    roullete_id = 2;
-    setInitialItems();
-});
-let bttn3 = document.getElementById("game3");
-bttn3.addEventListener("click", (e) => {
-    index_icons = 3;
-    roullete_id = 3;
-    setInitialItems();
-});
-let bttn4 = document.getElementById("game4");
-bttn4.addEventListener("click", (e) => {
-    index_icons = 4;
-    roullete_id = 4;
-    setInitialItems();
-});
-
-let bttn5 = document.getElementById("game5");
-bttn5.addEventListener("click", (e) => {
-    index_icons = 5;
-    roullete_id = 5;
-    setInitialItems();
-});
-let bttn6 = document.getElementById("game6");
-bttn6.addEventListener("click", (e) => {
-    index_icons = 6;
-    roullete_id = 6;
-    setInitialItems();
-});
-
-
-
 
 async function authe() {
 const response = await fetch('http://localhost:8000/auth', {
-method: 'POST',
-headers: {
-'Content-Type': 'application/json',
-'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
 
-},
-});
+        },
+    });
 
-if (!response.ok) {
-throw new Error('Server error');
-}
+    if (!response.ok) {
+        console.log('error');
 
-const msg = await response.json();
-}
+    }
+    try {
+        const msg = await response.json();
+
+        let photo_url = msg[0][2];
+        let nickname = msg[0][1];
+        document.getElementById("profilepicture").src = photo_url;
+        document.getElementById("nickname").innerText = "Azer";
+    } catch {
+        document.getElementById("profilepicture").src = "unknown";
+        document.getElementById("nickname").innerText = "Unknown";
+    }
+    }
 //referal();
-//authe();
+authe();
 const ICONS = {
     1:["https://fragment.com/file/gifts/plushpepe/thumb.webp",
        "https://fragment.com/file/gifts/durovscap/thumb.webp",
