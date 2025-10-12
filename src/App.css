@@ -1277,7 +1277,8 @@ border-radius: 8px;
 }
 #wallbalik::placeholder{
     color: white;
-    opacity: 1;
+    padding: -5px;
+
 }
 #wallbalik::-webkit-outer-spin-button,
 #wallbalik::-webkit-inner-spin-button {
