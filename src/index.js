@@ -3,30 +3,46 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import openconnect from './tonmanager';
+import {openconnect, get_balance, get_addr} from './tonmanager';
 import confetti from 'canvas-confetti';
 
 
-// openconnect();
-// function connectUI() {
-    
-//     let dtts = document.querySelector('[data-tc-connect-button="true"]');
-//     const svg = dtts.querySelector('svg');
-//         if (svg) {
-//             svg.style.display = 'none'; 
-//         }
-//     dtts.style.borderRadius = "31px";
-//     dtts.style.width = "222px";
-//     dtts.style.height = "33px";
-//     const divd = dtts.querySelector('div');
-//         if (divd) {
-//             divd.innerText = 'Привязать кошелёк'; 
-//             divd.style.textAlign = 'center';
-//         }
-//     // dtts.style.display = 'none';
-// };
+const deposit = document.getElementById("refactor_buy");
+deposit.addEventListener("click", (e) => {
+    navigator.vibrate(1000);
+})
 
-// window.setTimeout(connectUI, 3000);
+async function connectUI() {
+    const boolean_value = openconnect();
+    if (boolean_value == false) {
+    let dtts = document.querySelector('[data-tc-connect-button="true"]');
+    const svg = dtts.querySelector('svg');
+        if (svg) {
+            svg.style.display = 'none'; 
+        }
+    dtts.style.borderRadius = "16px";
+    dtts.style.width = "159px";
+    dtts.style.height = "45px";
+    dtts.style.boxShadow = 'inset 0.8px 1px 0px -0.2px rgba(255, 255, 255, 0.647), inset -0.7px -0.9px 0px -0.1px rgba(255, 255, 255, 0.647)'
+    dtts.style.backdropFilter = 'blur(10px);'
+    const divd = dtts.querySelector('div');
+        if (divd) {
+            divd.innerText = 'Подключить'; 
+            divd.style.textAlign = 'center';
+            divd.style.alignItems = 'center';
+            divd.style.justifyContent = 'center';
+            divd.style.justifyItems = 'center';
+            divd.style.alignContent = 'center';
+            divd.style.marginLeft = '20px';
+        }
+    } else {
+        
+            document.getElementById('hexaddr').innerText= "Address: " + get_addr();
+    }
+    // dtts.style.display = 'none';
+};
+
+window.setTimeout(connectUI, 3000);
 document.addEventListener('DOMContentLoaded', function() {
     const button3 = document.getElementById('bblol_3');
     const button4 = document.getElementById('bblol_4');
@@ -34,7 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const shine3 = button3.querySelector('.liquidGlass-shine_3');
     const tint4 = button4.querySelector('.liquidGlass-tint_4');
     const shine4 = button4.querySelector('.liquidGlass-shine_4');
-
+    const tonbutton = document.getElementById("bblol_11");
+    const giftbutton = document.getElementById("bblol_12");
+    const starsbutton = document.getElementById("bblol_13");
+    const tonreturn = document.getElementById("bblol_14");
     // Изначально активируем первую кнопку
     tint3.classList.add('active');
     shine3.classList.add('active');
@@ -45,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Активируем эту кнопку
             tint3.classList.add('active');
             shine3.classList.add('active');
-            
+            document.getElementById("wrapper_9").style.display='block';
             // Деактивируем другую кнопку
             tint4.classList.remove('active');
             shine4.classList.remove('active');
@@ -59,11 +78,56 @@ document.addEventListener('DOMContentLoaded', function() {
             tint4.classList.add('active');
             shine4.classList.add('active');
             
+            document.getElementById("wrapper_9").style.display='none';
             // Деактивируем другую кнопку
             tint3.classList.remove('active');
             shine3.classList.remove('active');
         }
     });
+
+
+    tonbutton.addEventListener("click", (e) => {
+        tonbutton.style.display='none';
+        giftbutton.style.display='none';
+        starsbutton.style.display='none';
+        const boolean_value = openconnect();
+        if (boolean_value == false) {
+            
+            document.getElementById('tonpaymentsystem').style.display='block';
+            document.getElementById('walletdoesnt').style.display='block';
+            document.getElementById('ton-connect').style.display='block';
+            document.getElementById('wallbalik').style.display='none';
+            document.getElementById('hexaddr').style.display='none';
+            document.getElementById('refactor_buy').style.display='none';
+        } else {
+            document.getElementById('tonpaymentsystem').style.display='block';
+            document.getElementById('walletdoesnt').style.display='none';
+            document.getElementById('ton-connect').style.display='none';
+            document.getElementById('wallbalik').style.display='block';
+            document.getElementById('hexaddr').style.display='block';
+            document.getElementById('refactor_buy').style.display='block';
+
+        }
+    });
+    
+    giftbutton.addEventListener("click", (e) => {
+        tonbutton.style.display='none';
+        giftbutton.style.display='none';
+        starsbutton.style.display='none';
+    });
+
+    starsbutton.addEventListener("click", (e) => {
+        tonbutton.style.display='none';
+        giftbutton.style.display='none';
+        starsbutton.style.display='none';
+    });
+    tonreturn.addEventListener("click", (e) => {
+        tonbutton.style.display='block';
+        giftbutton.style.display='block';
+        starsbutton.style.display='block';
+        document.getElementById('tonpaymentsystem').style.display='none';
+
+    })
 });
 let winner = 0;
 
@@ -90,9 +154,9 @@ const response = await fetch('http://localhost:8000/auth', {
         console.log('error');
 
     }
-    
-        const msg = await response.json();
     try {
+        const msg = await response.json();
+
         let photo_url = msg[0][2];
         let nickname = msg[0][1];
         let balance = msg[1];
