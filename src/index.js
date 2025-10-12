@@ -3,13 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {openconnect, get_balance, get_addr} from './tonmanager';
+import {openconnect, get_addr, send_deposit} from './tonmanager';
 import confetti from 'canvas-confetti';
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
 
+const { initDataRaw, initData } = retrieveLaunchParams();
+console.log(initData);
+console.log(initDataRaw);
 
 const deposit = document.getElementById("refactor_buy");
 deposit.addEventListener("click", (e) => {
-    navigator.vibrate(1000);
+    if (document.getElementById("wallbalik").value < 0.1) {
+            document.getElementById("wallbalik").classList.add("error");
+            let errorTimeout = setTimeout(() => {
+            document.getElementById("wallbalik").classList.remove('error');
+            }, 500);
+    } else {
+        send_deposit(document.getElementById("wallbalik").value)
+    }
 })
 
 async function connectUI() {
@@ -35,11 +46,7 @@ async function connectUI() {
             divd.style.alignContent = 'center';
             divd.style.marginLeft = '20px';
         }
-    } else {
-        
-            document.getElementById('hexaddr').innerText= "Address: " + get_addr();
-    }
-    // dtts.style.display = 'none';
+    }    // dtts.style.display = 'none';
 };
 
 window.setTimeout(connectUI, 3000);
@@ -60,6 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Обработчик для кнопки "Пополнить"
     button3.addEventListener('click', function() {
+        tonbutton.style.display='block';
+        giftbutton.style.display='block';
+        starsbutton.style.display='block';
+        document.getElementById('tonpaymentsystem').style.display='none';
+
         if (!tint3.classList.contains('active')) {
             // Активируем эту кнопку
             tint3.classList.add('active');
@@ -106,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('wallbalik').style.display='block';
             document.getElementById('hexaddr').style.display='block';
             document.getElementById('refactor_buy').style.display='block';
+            document.getElementById('hexaddr').innerText= "Address: " + get_addr();
 
         }
     });

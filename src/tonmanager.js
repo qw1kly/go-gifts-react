@@ -1,5 +1,12 @@
 import { TonConnectUI, THEME } from '@tonconnect/ui';
 
+function stringToHex(str) {
+    const encoder = new TextEncoder();
+    const bytes = encoder.encode(str);
+    return Array.from(bytes)
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+}
 
 const tonConnectUI = new TonConnectUI({
         manifestUrl: 'https://qw1kly-go-gifts-react-3930.twc1.net/tonconnect-manifest.json',
@@ -8,6 +15,7 @@ const tonConnectUI = new TonConnectUI({
             theme: THEME.DARK
         }
     });
+
 
 export function openconnect() {
     const currentIsConnectedStatus = tonConnectUI.connected;
@@ -45,3 +53,29 @@ export function get_addr() {
     return tonConnectUI.account.address.slice(0, 4) + "..." + tonConnectUI.account.address.slice(-5, -1) 
 }
 
+export async function send_deposit(amount) {
+    const response = await fetch('http://localhost:8000/get-hex', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: "4573849",
+            balance: 0
+        })
+    });
+    const msg = await response.json();
+    const transactionWithExtraCurrency = {
+    validUntil: Math.floor(Date.now() / 1000) + 60,
+    messages: [
+        {
+            address: "UQAdoLtSN0k3ZYk06VoAwxcq8Xm2hM2Qa8Co-6IirX6Sywq4",
+            amount: String(amount*10**9),
+            payload: msg[1],
+
+        }
+    ]
+};
+    const result = await tonConnectUI.sendTransaction(transactionWithExtraCurrency);
+    console.log(result);
+}
