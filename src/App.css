@@ -1269,9 +1269,15 @@ font-weight: 400;
 font-size: 20px;
 line-height: 30px;
 color: #FFFFFF;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+border-radius: 8px;
+-webkit-border-radius: 8px;
 }
 #wallbalik::placeholder{
     color: white;
+    opacity: 1;
 }
 #wallbalik::-webkit-outer-spin-button,
 #wallbalik::-webkit-inner-spin-button {
