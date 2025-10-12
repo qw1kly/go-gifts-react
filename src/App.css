@@ -1303,12 +1303,12 @@ color: #FFFFFF;
 
 
 #refactor_buy{
-    position: relative;
+    position: absolute;
     width: 159px;
     height: 45px;
     left: -37px;
     border-radius: 16px;
-    top: 10px;
+    top: 115px;
 }
 
 
