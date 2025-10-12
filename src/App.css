@@ -1256,8 +1256,8 @@ width: 85px;
 
 #wallbalik{
 position: absolute;
-margin-top: 10px;
-margin-left: 10px;
+top: 70px;
+left: 10px;
 border: none;
 background: none;
 padding: none;
