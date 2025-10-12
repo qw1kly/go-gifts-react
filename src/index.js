@@ -93,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    tonbutton.addEventListener("pointerdown", (e) => {
+    tonbutton.addEventListener("click", (e) => {
+        e.preventDefault();
         navigator.vibrate(1000);
         tonbutton.style.display='none';
         giftbutton.style.display='none';
