@@ -162,8 +162,9 @@ const response = await fetch('http://localhost:8000/auth', {
         console.log('error');
 
     }
+    const msg = await response.json();
     try {
-        const msg = await response.json();
+        
 
         let photo_url = msg[0][2];
         let nickname = msg[0][1];
