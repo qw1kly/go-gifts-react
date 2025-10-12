@@ -39,7 +39,19 @@ import { initData } from '@telegram-apps/sdk-react';
                chat_instance: params.get('chat_instance'),
            };
        };
-       return initData;
+       return (
+           <div>
+               <h1>My Telegram Mini App</h1>
+               {userData ? (
+                   <div>
+                       <h2>User Info:</h2>
+                       <pre>{JSON.stringify(userData, null, 2)}</pre>
+                   </div>
+               ) : (
+                   <p>Loading user data...</p>
+               )}
+           </div>
+       );
     }
 MyTelegramApp();
 const deposit = document.getElementById("refactor_buy");
