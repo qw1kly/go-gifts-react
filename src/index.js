@@ -8,9 +8,11 @@ import confetti from 'canvas-confetti';
 import { retrieveLaunchParams, init  } from '@telegram-apps/sdk';
 
 init();
-const { initDataRaw, initData } = retrieveLaunchParams();
-console.log(initData);
-console.log(initDataRaw);
+setTimeout(() => {
+  const { initDataRaw, initData } = retrieveLaunchParams();
+  console.log('initData:', initData);
+  console.log('initDataRaw:', initDataRaw);
+}, 3000);
 
 const deposit = document.getElementById("refactor_buy");
 deposit.addEventListener("click", (e) => {
