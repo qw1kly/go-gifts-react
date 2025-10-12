@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     tonbutton.addEventListener("click", (e) => {
         e.preventDefault();
-        navigator.vibrate(1000);
+        navigator.vibrate(100);
         tonbutton.style.display='none';
         giftbutton.style.display='none';
         starsbutton.style.display='none';
