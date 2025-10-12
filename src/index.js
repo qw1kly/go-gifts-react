@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {openconnect, get_addr, send_deposit} from './tonmanager';
 import confetti from 'canvas-confetti';
-import { retrieveLaunchParams } from '@telegram-apps/sdk';
+import { retrieveLaunchParams, init  } from '@telegram-apps/sdk';
 
+init();
 const { initDataRaw, initData } = retrieveLaunchParams();
 console.log(initData);
 console.log(initDataRaw);
