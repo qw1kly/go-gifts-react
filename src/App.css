@@ -1169,7 +1169,7 @@ width: 160px;
     position: relative;
     width: 85px;
     height: 35px;
-    margin-left: 4px;
+    margin: 9px auto; /* Центрируем */
     margin-top: 9px;
     border-radius: 34px;
 }
