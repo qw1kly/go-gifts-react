@@ -27,13 +27,54 @@ import confetti from 'canvas-confetti';
 // };
 
 // window.setTimeout(connectUI, 3000);
+document.addEventListener('DOMContentLoaded', function() {
+    const button3 = document.getElementById('bblol_3');
+    const button4 = document.getElementById('bblol_4');
+    const tint3 = button3.querySelector('.liquidGlass-tint_3');
+    const shine3 = button3.querySelector('.liquidGlass-shine_3');
+    const tint4 = button4.querySelector('.liquidGlass-tint_4');
+    const shine4 = button4.querySelector('.liquidGlass-shine_4');
+
+    // Изначально активируем первую кнопку
+    tint3.classList.add('active');
+    shine3.classList.add('active');
+
+    // Обработчик для кнопки "Пополнить"
+    button3.addEventListener('click', function() {
+        if (!tint3.classList.contains('active')) {
+            // Активируем эту кнопку
+            tint3.classList.add('active');
+            shine3.classList.add('active');
+            
+            // Деактивируем другую кнопку
+            tint4.classList.remove('active');
+            shine4.classList.remove('active');
+        }
+    });
+
+    // Обработчик для кнопки "Инвентарь"
+    button4.addEventListener('click', function() {
+        if (!tint4.classList.contains('active')) {
+            // Активируем эту кнопку
+            tint4.classList.add('active');
+            shine4.classList.add('active');
+            
+            // Деактивируем другую кнопку
+            tint3.classList.remove('active');
+            shine3.classList.remove('active');
+        }
+    });
+});
 let winner = 0;
 
 let index_icons = 1;
 
 let roullete_id = 1;
 
+document.getElementById("refactor").addEventListener("click", (e)=>{
+    // document.getElementById("settingsphoto").transform="rotate(90deg)";
 
+})
 
 async function authe() {
 const response = await fetch('http://localhost:8000/auth', {
@@ -54,15 +95,20 @@ const response = await fetch('http://localhost:8000/auth', {
 
         let photo_url = msg[0][2];
         let nickname = msg[0][1];
+        let balance = msg[1];
+        
         document.getElementById("profilepicture").src = photo_url;
         document.getElementById("nickname").innerText = "Azer";
+        document.getElementById("liquidGlass-effect").innerText = Number(balance);
+        document.getElementById("bblol").style.width = 65 + 6 * (balance.length - 3) + "px";
+        document.getElementById("toncoinsym").style.marginLeft = (Number(document.getElementById("bblol").style.width.slice(0, -2)) - 65) + 41 + "px";
     } catch {
         document.getElementById("profilepicture").src = "unknown";
         document.getElementById("nickname").innerText = "Unknown";
     }
     }
 //referal();
-//authe();
+authe();
 const ICONS = {
     1:["https://fragment.com/file/gifts/plushpepe/thumb.webp",
        "https://fragment.com/file/gifts/durovscap/thumb.webp",
