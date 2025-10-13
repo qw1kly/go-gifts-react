@@ -618,11 +618,9 @@ width: 35px;
   z-index: 1;
   position: absolute;
   inset: 0;
-    background: rgba(138, 138, 138, 0.08);
-    background-blend-mode: hard-light;
-    filter: blur(100px);
-    backdrop-filter: blur(140px);
-    border-radius: 24px;
+  background: rgb(255, 255, 255);
+  opacity: 0.07;
+  border-radius: 24px;
 
 }
 
@@ -663,7 +661,42 @@ width: 328px;
     margin-top: 5px;
     margin-left: 5px;
 }
+#slider{
+  position: absolute;
+  background: #1ABC9C;
+  opacity: 60%;
+  width: 159px;
+  height: 45px;
+  border-radius: 34px;
+  margin-left: 5px;
+  top: 5px;
+  display: none;
+}
+#slider.right{
+    animation: slidetoright 0.3s ease-in-out forwards; /* Apply the animation */
+}
+#slider.left{
+    animation: slidetoleft 0.3s ease-in-out forwards; /* Apply the animation */
+}
+@keyframes slidetoright {
+  from {
+      transform: translateX(0%); /* Start off-screen to the left */
+    }
+    to {
+      transform: translateX(100%); /* End at its original position */
+    }
+  }
+@keyframes slidetoleft {
+  from {
+      transform: translateX(100%); /* Start off-screen to the left */
+    }
+    to {
+      transform: translateX(0%); /* End at its original position */
+    }
 
+
+  
+}
 
 .liquidGlass-wrapper_3 {
   position: relative;
@@ -791,7 +824,7 @@ width: 159px;
     opacity: 60%;
     background-blend-mode: hard-light;
     filter: blur(0px);
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(10px);
     border-radius: 34px;
 
 }
@@ -838,14 +871,14 @@ width: 159px;
 .liquidGlass-shine_3,
 .liquidGlass-tint_4,
 .liquidGlass-shine_4 {
-	transition: .9s ease all;
+	/* transition: 0.4s ease all; */
 }
 
 /* Активное состояние */
 .liquidGlass-tint_3.active,
 .liquidGlass-tint_4.active {
     background: #1ABC9C;
-    transition: 0.4s ease-out all;
+    /* transition: 0.4s ease-out all; */
 
 }
 
@@ -910,11 +943,9 @@ width: 159px;
   z-index: 1;
   position: absolute;
   inset: 0;
-    background: rgba(138, 138, 138, 0.08);
-    background-blend-mode: hard-light;
-    filter: blur(0px);
-    backdrop-filter: blur(40px);
-    border-radius: 24px;
+  background: rgb(255, 255, 255);
+  opacity: 0.07;
+  border-radius: 24px;
 
 }
 
@@ -986,8 +1017,9 @@ width: 159px;
   z-index: 1;
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
+background: #F5F5F5;
+  opacity: 0.3;
+      border-radius: 16px;
 
 }
 
@@ -1067,8 +1099,9 @@ width: 160px;
   z-index: 1;
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
+background: #F5F5F5;
+  opacity: 0.3;
+      border-radius: 16px;
 
 }
 
@@ -1148,8 +1181,9 @@ width: 160px;
   z-index: 1;
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
+background: #F5F5F5;
+  opacity: 0.3;
+      border-radius: 16px;
 
 }
 
@@ -1547,9 +1581,9 @@ align-content: center;
 #refactor_modal{
     position: fixed; /* Меняем на fixed */
     width: 100%;
-    height: 50vh; /* Занимает 70% высоты экрана */
+    height: 55vh; /* Занимает 70% высоты экрана */
     border-radius: 16px 16px 0 0;
-    bottom: -50vh; /* Начальное положение - скрыто внизу */
+    bottom: -55vh; /* Начальное положение - скрыто внизу */
     left: 0;
     z-index: 1000;
 }
@@ -1589,7 +1623,7 @@ align-content: center;
 .liquidGlass-shine_modal {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 200;
   overflow: hidden;
   border-radius: 16px 16px 0 0;
   box-shadow: inset 0.9px .9px 0.9px -0.6px rgb(174, 240, 248),
@@ -1620,7 +1654,7 @@ align-content: center;
 
 @keyframes upToDown {
     from {
-        bottom: -50vh; /* Начальное положение */
+        bottom: -55vh; /* Начальное положение */
     }
     to {
         bottom: 0; /* Прижимаем к низу экрана */
@@ -1632,7 +1666,7 @@ align-content: center;
         bottom: 0; /* Начальное положение */
     }
     to {
-        bottom: -50vh; /* Прижимаем к низу экрана */
+        bottom: -55vh; /* Прижимаем к низу экрана */
     }
 }
 
@@ -1646,4 +1680,814 @@ width: 155px;
 height: 5px;
 background: #EFEFEF;
 border-radius: 6.5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#refactor_number_1{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 296px;
+    z-index: 100;
+    margin-top: 46px;
+    margin-left: 20px;
+}
+
+
+.liquidGlass-wrapper_number_1 {
+  position: relative;
+  
+  display: flex;
+  border-radius: 296px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_number_1 {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 296px;
+
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_number_1 {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.399);
+  border-radius: 296px;
+
+}
+
+.liquidGlass-shine_number_1 {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 296px;
+
+  box-shadow: inset 0.5px 1px 0px -0.2px rgb(255, 255, 255),
+    inset -0.5px -0.9px 0px -0.1px rgb(255, 255, 255);
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 31px;
+line-height: 38px;
+text-align: center;
+color: #FFFFFF;
+align-items: center;
+align-content: center;
+justify-content: center;
+justify-items: center;
+  }
+
+.button_number_1 {
+width: 45px;
+  height: 45px;
+    border-radius: 296px;
+}
+
+.button_number_1,
+.button_number_1 > div {
+    border-radius: 296px;
+}
+
+
+#refactor_number_2{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 296px;
+    z-index: 100;
+    margin-top: 116px;
+    margin-left: -35px;
+}
+
+
+.liquidGlass-wrapper_number_2 {
+  position: relative;
+  
+  display: flex;
+  border-radius: 296px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_number_2 {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 296px;
+
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_number_2 {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.399);
+  border-radius: 296px;
+
+}
+
+.liquidGlass-shine_number_2 {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 296px;
+
+ box-shadow: inset 0.5px 1px 0px -0.2px rgb(255, 255, 255),
+    inset -0.5px -0.9px 0px -0.1px rgb(255, 255, 255);
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 31px;
+line-height: 38px;
+text-align: center;
+color: #FFFFFF;
+align-items: center;
+align-content: center;
+justify-content: center;
+justify-items: center;
+  }
+
+.button_number_2 {
+width: 45px;
+  height: 45px;
+    border-radius: 296px;
+}
+
+.button_number_2,
+.button_number_2 > div {
+    border-radius: 296px;
+}
+
+
+#refactor_number_3{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 296px;
+    z-index: 100;
+    margin-top: 186px;
+    margin-left: -35px;
+}
+
+
+.liquidGlass-wrapper_number_3 {
+  position: relative;
+  
+  display: flex;
+  border-radius: 296px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_number_3 {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 296px;
+
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_number_3 {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.399);
+  border-radius: 296px;
+
+}
+
+.liquidGlass-shine_number_3 {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 296px;
+
+ box-shadow: inset 0.5px 1px 0px -0.2px rgb(255, 255, 255),
+    inset -0.5px -0.9px 0px -0.1px rgb(255, 255, 255);
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 31px;
+line-height: 38px;
+text-align: center;
+color: #FFFFFF;
+align-items: center;
+align-content: center;
+justify-content: center;
+justify-items: center;
+
+  }
+
+.button_number_3 {
+width: 45px;
+  height: 45px;
+    border-radius: 296px;
+}
+
+.button_number_3,
+.button_number_3 > div {
+    border-radius: 296px;
+}
+
+
+
+#refactor_number_4{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 296px;
+    z-index: 100;
+    margin-top: 256px;
+    margin-left: -35px;
+}
+
+
+.liquidGlass-wrapper_number_4 {
+  position: relative;
+  
+  display: flex;
+  border-radius: 296px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_number_4 {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 296px;
+
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_number_4 {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.399);
+  border-radius: 296px;
+
+}
+
+.liquidGlass-shine_number_4 {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 296px;
+
+  box-shadow: inset 0.5px 1px 0px -0.2px rgb(255, 255, 255),
+    inset -0.5px -0.9px 0px -0.1px rgb(255, 255, 255);
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 31px;
+line-height: 38px;
+text-align: center;
+color: #FFFFFF;
+align-items: center;
+align-content: center;
+justify-content: center;
+justify-items: center;
+
+  }
+
+.button_number_4 {
+width: 45px;
+  height: 45px;
+    border-radius: 296px;
+}
+
+.button_number_4,
+.button_number_4 > div {
+    border-radius: 296px;
+}
+
+#instr1{
+  
+position: absolute;
+min-width: 150px;
+max-width: 200px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+margin-top: 51px;
+margin-left: 78px;
+color: #FFFFFF;
+z-index: 100;
+
+}
+
+
+#instr2{
+  
+position: absolute;
+min-width: 150px;
+max-width: 170px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+margin-top: 121px;
+margin-left: 78px;
+color: #FFFFFF;
+z-index: 100;
+
+}
+
+#instr3{
+  
+position: absolute;
+min-width: 150px;
+max-width: 170px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+margin-top: 191px;
+margin-left: 78px;
+color: #FFFFFF;
+z-index: 100;
+
+}
+
+#instr4{
+  
+position: absolute;
+min-width: 150px;
+max-width: 200px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+margin-top: 261px;
+margin-left: 78px;
+color: #FFFFFF;
+z-index: 100;
+
+}
+#soonwarn{
+  position: relative;
+  z-index: 1;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 32px;
+line-height: 39px;
+color: #FFFFFF;
+align-items: center;
+justify-content: center;
+align-content: center;
+justify-items: center;
+top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#refactor_referal{
+    position: relative;
+    width: 328px;
+    height: 97px;
+    border-radius: 24px;
+    margin-top: 10px;
+}
+
+
+.liquidGlass-wrapper_referal {
+  position: relative;
+  
+  display: flex;
+    border-radius: 24px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_referal {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+    border-radius: 24px;
+
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_referal {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgb(255, 255, 255);
+    opacity: 0.07;
+    border-radius: 24px;
+
+}
+
+.liquidGlass-shine_referal {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+    border-radius: 24px;
+
+  box-shadow: inset 0.7px 0.5px 0.4px -0.2px rgb(174, 240, 248),
+    inset -0.7px -0.5px 0.4px -0.2px rgb(174, 240, 248);
+}
+
+.button_referal {
+    width: 328px;
+    height: 97px;
+    border-radius: 24px;
+}
+
+.button_referal,
+.button_referal > div {
+    border-radius: 24px;
+}
+
+#referaltext{
+  position: relative;
+  z-index: 10;
+  width: 208px;
+  height: 34px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  margin-top: 11px;
+  margin-left: 10px;
+}
+
+
+
+
+#refactor_usl{
+    position: relative;
+    width: 65px;
+    height: 26px;
+    border-radius: 34px;
+    margin-top: 9px;
+    margin-left: 35px;
+}
+
+
+.liquidGlass-wrapper_usl {
+  position: relative;
+  
+  display: flex;
+    border-radius: 34px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_usl {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+    border-radius: 34px;
+
+  filter: blur(0px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_usl {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 0.3;
+    border-radius: 34px;
+}
+
+.liquidGlass-shine_usl {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 34px;
+
+  box-shadow: inset 0.7px 0.6px 0px -0.3px rgb(174, 240, 248),
+              inset -0.7px -0.6px 0px -0.3px rgb(174, 240, 248);
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.button_usl { 
+    width: 65px;
+    height: 26px;
+    border-radius: 34px;
+}
+
+.button_usl,
+.button_usl > div {
+    border-radius: 34px;
+}
+#bblol_usl{
+    border-radius: 34px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#wrapper_invite{
+    z-index: 3;
+    position: relative;
+    width: 242px;
+    height: 36px;
+    border-radius: 24px;
+    margin-top: 53px;
+    margin-left: -308px;
+}
+
+
+.liquidGlass-wrapper_invite {
+  position: relative;
+  
+  display: flex;
+  border-radius: 34px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 2px 2px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_invite{
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 34px;
+
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_invite {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+    background: #1ABC9C;
+    opacity: 60%;
+    background-blend-mode: hard-light;
+    filter: blur(4px);
+    backdrop-filter: blur(10px);
+    border-radius: 34px;
+
+}
+
+.liquidGlass-shine_invite {
+
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 34px;
+
+  box-shadow: inset 0.7px 0.5px 0.4px -0.2px rgb(174, 240, 248),
+    inset -0.7px -0.5px 0.4px -0.2px rgb(174, 240, 248);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 23px;
+    text-align: center;
+    color: white;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+
+    
+}
+
+.button_invite {
+width: 242px;
+  height: 36px;
+    border-radius: 12px;
+}
+
+.button_invite,
+.button_invite > div {
+      border-radius: 12px;
+}
+#bblol_invite{
+    border-radius: 12px;
+
+}
+
+
+
+
+
+
+
+#refactor_copy{
+    position: relative;
+    width: 57px;
+    height: 36px;
+    border-radius: 34px;
+    margin-top: 53px;
+    margin-left: 9px;
+}
+
+
+.liquidGlass-wrapper_copy {
+  position: relative;
+  
+  display: flex;
+  border-radius: 34px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_copy {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+    border-radius: 34px;
+
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_copy {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 0.3;
+    border-radius: 34px;
+}
+
+.liquidGlass-shine_copy {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 12px;
+
+  box-shadow: inset 0.8px 0.7px 0px -0.3px rgb(174, 240, 248),
+              inset -0.8px -0.7px 0px -0.3px rgb(174, 240, 248);
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.button_copy {     
+    width: 57px;
+    height: 36px;
+    border-radius: 34px;
+}
+
+.button_copy,
+.button_copy > div {
+    border-radius: 12px;
+}
+#bblol_copy{
+    border-radius: 12px;
+}
+
+#copyimg{
+  position: relative;
+  z-index: 10;
+  width: 29px;
+  height: 28px;
+  margin-top: 4px;
+  margin-left: 14px;
 }

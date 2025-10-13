@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {openconnect, get_addr, send_deposit} from './tonmanager';
 import confetti from 'canvas-confetti';
+import {init, openTelegramLink } from '@telegram-apps/sdk';
+//init()
+
 
 const deposit = document.getElementById("refactor_buy");
 deposit.addEventListener("click", (e) => {
@@ -58,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const tonreturn = document.getElementById("bblol_14");
     const giftreturn = document.getElementById("bblol_14_gift");
     const showmodalgift = document.getElementById("bblol_gift");
+    const starmodalgift = document.getElementById("bblol_stars");
+
     // Изначально активируем первую кнопку
     tint3.classList.add('active');
     shine3.classList.add('active');
@@ -69,14 +74,20 @@ document.addEventListener('DOMContentLoaded', function() {
         starsbutton.style.display='block';
         document.getElementById('tonpaymentsystem').style.display='none';
         document.getElementById('giftpaymentsystem').style.display='none';
+        document.getElementById('starspaymentsystem').style.display='none';
 
         if (!tint3.classList.contains('active')) {
             // Активируем эту кнопку
-            tint3.classList.add('active');
-            shine3.classList.add('active');
-            tint4.style.right="70%";
-            tint3.style.left="0%";
-            tint3.style.right = "0%"
+            
+           document.getElementById("slider").style.display = 'block';
+            document.getElementById("slider").classList.add('left');
+            setTimeout(() => {
+                tint3.classList.add('active');
+                shine3.classList.add('active');
+                document.getElementById("slider").style.display = 'none';
+                document.getElementById("slider").classList.remove('left');
+                
+            }, 300);
             document.getElementById("wrapper_9").style.display='block';
             // Деактивируем другую кнопку
             tint4.classList.remove('active');
@@ -88,11 +99,17 @@ document.addEventListener('DOMContentLoaded', function() {
     button4.addEventListener('click', function() {
         if (!tint4.classList.contains('active')) {
             // Активируем эту кнопку
-            tint4.classList.add('active');
-            shine4.classList.add('active');
-            tint3.style.left="70%"
-            tint4.style.left="0%";
-            tint4.style.right = "0%"
+            document.getElementById("slider").style.display = 'block';
+            document.getElementById("slider").classList.add('right');
+            setTimeout(() => {
+                tint4.classList.add('active');  
+                shine4.classList.add('active');  
+                document.getElementById("slider").style.display = 'none';
+                document.getElementById("slider").classList.remove('right');
+             
+            }, 300);
+            
+            
             document.getElementById("wrapper_9").style.display='none';
             // Деактивируем другую кнопку
             tint3.classList.remove('active');
@@ -139,6 +156,8 @@ document.addEventListener('DOMContentLoaded', function() {
         tonbutton.style.display='none';
         giftbutton.style.display='none';
         starsbutton.style.display='none';
+        document.getElementById('starspaymentsystem').style.display='block';
+
     });
     tonreturn.addEventListener("click", (e) => {
         tonbutton.style.display='block';
@@ -153,6 +172,13 @@ document.addEventListener('DOMContentLoaded', function() {
         giftbutton.style.display='block';
         starsbutton.style.display='block';
         document.getElementById('giftpaymentsystem').style.display='none';
+
+    });
+    starmodalgift.addEventListener("click", (e) => {
+        tonbutton.style.display='block';
+        giftbutton.style.display='block';
+        starsbutton.style.display='block';
+        document.getElementById('starspaymentsystem').style.display='none';
 
     });
     showmodalgift.addEventListener("click", (e) => {
@@ -193,6 +219,22 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
         main.style.display = 'none';
         }, 500);
+    })
+    
+    let invite_handler = document.getElementById("bblol_invite");
+    invite_handler.addEventListener("click", (e) => {
+        const shareData = "https://t.me/share/url?url=https://t.me/testantiplug_bot/referal?startapp"+"="+"34013"
+        openTelegramLink(shareData);   
+    });
+
+    let copy_handler = document.getElementById("bblol_copy");
+    copy_handler.addEventListener("click", (event) => {
+        navigator.clipboard.writeText("https://t.me/testantiplug_bot/referal?startapp"+"="+"34013")
+        .then(() => {
+        })
+        .catch(err => {
+        console.log('Something went wrong', err);
+        });
     })
 
 });

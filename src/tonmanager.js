@@ -1,12 +1,6 @@
 import { TonConnectUI, THEME } from '@tonconnect/ui';
 
-function stringToHex(str) {
-    const encoder = new TextEncoder();
-    const bytes = encoder.encode(str);
-    return Array.from(bytes)
-        .map(b => b.toString(16).padStart(2, '0'))
-        .join('');
-}
+
 
 const tonConnectUI = new TonConnectUI({
         manifestUrl: 'https://qw1kly-go-gifts-react-3930.twc1.net/tonconnect-manifest.json',
