@@ -255,8 +255,9 @@
     let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
     tg.requestFullscreen();
     document.addEventListener("click", (e) => {
+        if(event.target.tagName == 'DIV'){
     tg.HapticFeedback.impactOccurred("light");
-    })
+        }})
 </script>
 </body>
 </html>
