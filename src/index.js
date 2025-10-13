@@ -94,14 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     tonbutton.addEventListener("click", (e) => {
-        console.log(navigator)
-        if ('navigator.haptics' in navigator) {
-            navigator.haptics.vibrate('hard');
-            alert(1)
-        } else if ('vibrate' in navigator) {
-            alert(2)
-            navigator.vibrate(500);
-        }
+        navigator.vibrate([100]);
         tonbutton.style.display='none';
         giftbutton.style.display='none';
         starsbutton.style.display='none';
