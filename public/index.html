@@ -250,10 +250,14 @@
         <input type="number" id="degrees" value="720" min="0" max="1080">
         <button id="bibo">Вращать стрелку</button>
     </div>
+    <button onclick="vibcheck()">Проверить вибр</button>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
     let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
-    tg.requestFullscreen() 
+    tg.requestFullscreen();
+    function vibcheck(){
+    tg.HapticFeedback.notificationOccurred("error");
+    }
 </script>
 </body>
 </html>
