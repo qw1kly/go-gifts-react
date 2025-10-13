@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {openconnect, get_addr, send_deposit} from './tonmanager';
 import confetti from 'canvas-confetti';
 import {init, openTelegramLink } from '@telegram-apps/sdk';
-//init()
+init()
 
 
 const deposit = document.getElementById("refactor_buy");
