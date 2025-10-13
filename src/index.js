@@ -56,6 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const giftbutton = document.getElementById("bblol_12");
     const starsbutton = document.getElementById("bblol_13");
     const tonreturn = document.getElementById("bblol_14");
+    const giftreturn = document.getElementById("bblol_14_gift");
+    const showmodalgift = document.getElementById("bblol_gift");
     // Изначально активируем первую кнопку
     tint3.classList.add('active');
     shine3.classList.add('active');
@@ -66,11 +68,15 @@ document.addEventListener('DOMContentLoaded', function() {
         giftbutton.style.display='block';
         starsbutton.style.display='block';
         document.getElementById('tonpaymentsystem').style.display='none';
+        document.getElementById('giftpaymentsystem').style.display='none';
 
         if (!tint3.classList.contains('active')) {
             // Активируем эту кнопку
             tint3.classList.add('active');
             shine3.classList.add('active');
+            tint4.style.right="70%";
+            tint3.style.left="0%";
+            tint3.style.right = "0%"
             document.getElementById("wrapper_9").style.display='block';
             // Деактивируем другую кнопку
             tint4.classList.remove('active');
@@ -84,7 +90,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Активируем эту кнопку
             tint4.classList.add('active');
             shine4.classList.add('active');
-            
+            tint3.style.left="70%"
+            tint4.style.left="0%";
+            tint4.style.right = "0%"
             document.getElementById("wrapper_9").style.display='none';
             // Деактивируем другую кнопку
             tint3.classList.remove('active');
@@ -122,6 +130,9 @@ document.addEventListener('DOMContentLoaded', function() {
         tonbutton.style.display='none';
         giftbutton.style.display='none';
         starsbutton.style.display='none';
+        
+        document.getElementById('giftpaymentsystem').style.display='block';
+
     });
 
     starsbutton.addEventListener("click", (e) => {
@@ -135,7 +146,55 @@ document.addEventListener('DOMContentLoaded', function() {
         starsbutton.style.display='block';
         document.getElementById('tonpaymentsystem').style.display='none';
 
+    });
+
+    giftreturn.addEventListener("click", (e) => {
+        tonbutton.style.display='block';
+        giftbutton.style.display='block';
+        starsbutton.style.display='block';
+        document.getElementById('giftpaymentsystem').style.display='none';
+
+    });
+    showmodalgift.addEventListener("click", (e) => {
+    const modal = document.getElementById("refactor_modal");
+    modal.style.display = 'block';
+    main.classList.remove('modal-hide');
+    modal.classList.add('modal-show');
     })
+
+    const line = document.getElementById('svapper')
+    const main = document.getElementById("refactor_modal")
+    main.addEventListener('mousedown', () => {
+    // Для ПК
+    main.classList.remove('modal-show');
+    main.classList.add('modal-hide');
+    setTimeout(() => {
+        main.style.display = 'none';
+    }, 500);
+    })
+    main.addEventListener('mouseup', () => {
+    // Для ПК
+    main.classList.remove('modal-show');
+    main.classList.add('modal-hide');
+    setTimeout(() => {
+        main.style.display = 'none';
+    }, 500);
+    })
+    main.addEventListener('touchmove', () => {
+        main.classList.remove('modal-show');
+        main.classList.add('modal-hide');
+        setTimeout(() => {
+            main.style.display = 'none';
+        }, 500);
+    })
+    main.addEventListener('touchend', () => {
+        main.classList.remove('modal-show');
+        main.classList.add('modal-hide');
+        setTimeout(() => {
+        main.style.display = 'none';
+        }, 500);
+    })
+
 });
 let winner = 0;
 
@@ -162,9 +221,8 @@ const response = await fetch('http://localhost:8000/auth', {
         console.log('error');
 
     }
-    const msg = await response.json();
     try {
-        
+        const msg = await response.json();
 
         let photo_url = msg[0][2];
         let nickname = msg[0][1];
