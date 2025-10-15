@@ -6,8 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import {openconnect, get_addr, send_deposit} from './tonmanager';
 import confetti from 'canvas-confetti';
 import {init, openTelegramLink } from '@telegram-apps/sdk';
-init()
+//init()
 
+let giftCounter = 0;
 
 const deposit = document.getElementById("refactor_buy");
 deposit.addEventListener("click", (e) => {
@@ -25,6 +26,7 @@ async function connectUI() {
     const boolean_value = openconnect();
     if (boolean_value == false) {
     let dtts = document.querySelector('[data-tc-connect-button="true"]');
+    let fitter = document.querySelector('[data-tc-text="true"]');
     const svg = dtts.querySelector('svg');
         if (svg) {
             svg.style.display = 'none'; 
@@ -32,9 +34,12 @@ async function connectUI() {
     dtts.style.borderRadius = "16px";
     dtts.style.width = "159px";
     dtts.style.height = "45px";
-    dtts.style.boxShadow = 'inset 0.8px 1px 0px -0.2px rgba(255, 255, 255, 0.647), inset -0.7px -0.9px 0px -0.1px rgba(255, 255, 255, 0.647)'
-    dtts.style.backdropFilter = 'blur(10px);'
-    const divd = dtts.querySelector('div');
+    dtts.style.boxShadow = 'inset 0.7px 0.5px 0.4px -0.2px rgb(174, 240, 248), inset -0.7px -0.5px 0.4px -0.2px rgb(174, 240, 248)'
+    dtts.style.opacity = '1';
+    dtts.style.backdropFilter = 'blur(10px)'
+        
+        fitter.style.position = "absolute"; // добавляем позиционирование
+        const divd = dtts.querySelector('div');
         if (divd) {
             divd.innerText = 'Подключить'; 
             divd.style.textAlign = 'center';
@@ -67,8 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
     tint3.classList.add('active');
     shine3.classList.add('active');
 
+
     // Обработчик для кнопки "Пополнить"
     button3.addEventListener('click', function() {
+        if (button3.getAttribute('disabled') == 'true') return;
+
         tonbutton.style.display='block';
         giftbutton.style.display='block';
         starsbutton.style.display='block';
@@ -79,15 +87,25 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!tint3.classList.contains('active')) {
             // Активируем эту кнопку
             
-           document.getElementById("slider").style.display = 'block';
+            document.getElementById("slider").style.display = 'block';
             document.getElementById("slider").classList.add('left');
+            button4.setAttribute('disabled', true);
+            document.getElementById("refactor_1").classList.add('active');
+            document.getElementById("refactor_2").classList.add('active');
+            document.getElementById("refactor_3").classList.add('active');
+            setTimeout(() => {
+                button4.setAttribute('disabled', false);
+            }, 700);
             setTimeout(() => {
                 tint3.classList.add('active');
                 shine3.classList.add('active');
                 document.getElementById("slider").style.display = 'none';
                 document.getElementById("slider").classList.remove('left');
-                
+                document.getElementById("refactor_1").classList.remove('active');
+                document.getElementById("refactor_2").classList.remove('active');
+                document.getElementById("refactor_3").classList.remove('active');
             }, 300);
+            document.getElementById("inventory").style.display='none';
             document.getElementById("wrapper_9").style.display='block';
             // Деактивируем другую кнопку
             tint4.classList.remove('active');
@@ -97,19 +115,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Обработчик для кнопки "Инвентарь"
     button4.addEventListener('click', function() {
+        if (button4.getAttribute('disabled') == 'true') return;
+
         if (!tint4.classList.contains('active')) {
+            
             // Активируем эту кнопку
             document.getElementById("slider").style.display = 'block';
             document.getElementById("slider").classList.add('right');
+            button3.setAttribute('disabled', true);
+            document.getElementById("wrapper_all").classList.add('active');
+            document.getElementById("emojicount").classList.add('active');
+            document.getElementById("wrapper_sellall").classList.add("active");
+            setTimeout(() => {
+                button3.setAttribute('disabled', false);
+            }, 700);
             setTimeout(() => {
                 tint4.classList.add('active');  
                 shine4.classList.add('active');  
                 document.getElementById("slider").style.display = 'none';
+                document.getElementById("wrapper_sellall").classList.remove("active");
+
                 document.getElementById("slider").classList.remove('right');
-             
+                document.getElementById("wrapper_all").classList.remove('active');
+                document.getElementById("emojicount").classList.remove('active');
+
             }, 300);
             
-            
+            document.getElementById("inventory").style.display='block';
             document.getElementById("wrapper_9").style.display='none';
             // Деактивируем другую кнопку
             tint3.classList.remove('active');
@@ -164,7 +196,15 @@ document.addEventListener('DOMContentLoaded', function() {
         giftbutton.style.display='block';
         starsbutton.style.display='block';
         document.getElementById('tonpaymentsystem').style.display='none';
+        document.getElementById("refactor_1").classList.add('active');
+        document.getElementById("refactor_2").classList.add('active');
+        document.getElementById("refactor_3").classList.add('active');
 
+        setTimeout(() => {
+            document.getElementById("refactor_1").classList.remove('active');
+            document.getElementById("refactor_2").classList.remove('active');
+            document.getElementById("refactor_3").classList.remove('active');
+        }, 300);
     });
 
     giftreturn.addEventListener("click", (e) => {
@@ -172,14 +212,30 @@ document.addEventListener('DOMContentLoaded', function() {
         giftbutton.style.display='block';
         starsbutton.style.display='block';
         document.getElementById('giftpaymentsystem').style.display='none';
+        document.getElementById("refactor_1").classList.add('active');
+        document.getElementById("refactor_2").classList.add('active');
+        document.getElementById("refactor_3").classList.add('active');
 
+        setTimeout(() => {
+            document.getElementById("refactor_1").classList.remove('active');
+            document.getElementById("refactor_2").classList.remove('active');
+            document.getElementById("refactor_3").classList.remove('active');
+        }, 300);
     });
     starmodalgift.addEventListener("click", (e) => {
         tonbutton.style.display='block';
         giftbutton.style.display='block';
         starsbutton.style.display='block';
         document.getElementById('starspaymentsystem').style.display='none';
+        document.getElementById("refactor_1").classList.add('active');
+        document.getElementById("refactor_2").classList.add('active');
+        document.getElementById("refactor_3").classList.add('active');
 
+        setTimeout(() => {
+            document.getElementById("refactor_1").classList.remove('active');
+            document.getElementById("refactor_2").classList.remove('active');
+            document.getElementById("refactor_3").classList.remove('active');
+        }, 300);
     });
     showmodalgift.addEventListener("click", (e) => {
     const modal = document.getElementById("refactor_modal");
@@ -236,6 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Something went wrong', err);
         });
     })
+    
 
 });
 let winner = 0;
@@ -243,6 +300,348 @@ let winner = 0;
 let index_icons = 1;
 
 let roullete_id = 1;
+
+
+document.getElementById("wrapper_sellall_now").addEventListener("click", async function meme(e)  {
+     const response = await fetch('http://localhost:8000/sellall', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
+
+        },
+        body: JSON.stringify({
+            id: "457835158",
+            balance: "0.00",
+        })
+    });
+
+    if (!response.ok) {
+        window.reload();
+
+    }
+    const msg = await response.json();
+    let new_bal = msg['new_balance']
+    
+    document.getElementById("liquidGlass-effect").innerText = Number(new_bal);
+    document.getElementById("bblol").style.width = 65 + 6 * (new_bal.length - 2) + "px";
+    document.getElementById("toncoinsym").style.marginLeft = (Number(document.getElementById("bblol").style.width.slice(0, -2)) - 65) + 41 + "px";
+    giftCounter = 0;
+    document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
+    document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
+    document.getElementById("emojicount").innerText = "Emoji: "+giftCounter;
+   
+    let messout = 1;
+    let gessout = 1;
+    while (1 == 1) {
+        gessout=1;
+        messout=1;
+        try {   
+            document.getElementById("allitems").removeChild(document.getElementById("currentgiftinventory"))
+            gessout = 0;
+        } 
+        catch {  
+            try{
+                document.getElementById("allitemsbig").removeChild(document.getElementById("bigcurrentitem"))
+            } catch {
+                break;
+            }
+        }
+        finally {
+            if (gessout == 0 & messout == 0) {
+                break;
+            }
+        }
+    }
+    
+
+    document.getElementById("refactor_modal_gift_all1").classList.remove('modal-showgift_all1');
+    document.getElementById("refactor_modal_gift_all1").classList.add('modal-hidegift_all1');
+    
+    setTimeout(() => {
+        document.getElementById("refactor_modal_gift_all1").style.display = "none";
+    }, 500);
+})
+document.getElementById("slider2_").addEventListener("click", (e) => {
+    document.getElementById("refactor_modal_gift_all1").classList.remove('modal-showgift_all1');
+    document.getElementById("refactor_modal_gift_all1").classList.add('modal-hidegift_all1');
+    setTimeout(() => {
+        document.getElementById("refactor_modal_gift_all1").style.display = "none";
+    }, 500);
+})
+
+
+document.getElementById("wrapper_with").addEventListener("click", async function withid (e) {
+    const response = await fetch('http://localhost:8000/withdraw-gift', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
+
+        },
+        body: JSON.stringify({
+            owner_id: "457835158",
+            gift_name: document.getElementById("currentgiftimg").data[0],
+            gift_price: document.getElementById("currentgiftimg").data[1],
+            timestamp: document.getElementById("currentgiftimg").data[2]
+        })
+    });
+
+    if (!response.ok) {
+        window.reload();
+
+    }
+    const msg = await response.json();
+    
+    giftCounter = giftCounter - 1;
+    document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
+    document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
+    document.getElementById("emojicount").innerText = "Emoji: "+giftCounter;
+    const articles = document.getElementsByClassName("megaboxi");
+
+    for (let index_s = 0; index_s < articles.length; index_s++) {
+        if (articles[index_s].data.split('_') == document.getElementById("currentgiftimg").data + ",$") {
+            try {
+                document.getElementById("allitems").removeChild(articles[index_s])
+                try {
+                    document.getElementById("allitemsbig").removeChild(articles[index_s])
+
+                } catch {
+                    continue
+                }
+            } catch {
+                document.getElementById("allitemsbig").removeChild(articles[index_s])
+
+            }
+            }
+
+    }
+    setTimeout(() => {
+        document.getElementById("refactor_modal_gift").style.display = "none";
+    }, 500);
+})
+
+
+document.getElementById("wrapper_sellall").addEventListener("click", async function sellAll(e) {
+    if (document.getElementsByClassName("megaboxi").length == 0) {
+        document.getElementById("wrapper_sellall").classList.add("active_shake")
+        setTimeout(() => {
+        document.getElementById("wrapper_sellall").classList.remove("active_shake")
+        }, 500);
+    } else {
+    document.getElementById("refactor_modal_gift_all1").style.display='block';
+    document.getElementById("refactor_modal_gift_all1").classList.remove('modal-hidegift_all1');
+    document.getElementById("refactor_modal_gift_all1").classList.add('modal-showgift_all1');
+    let main = document.getElementById("refactor_modal")
+    let current_gift = document.getElementById("refactor_modal_gift");
+    main.classList.remove('modal-show');
+    main.classList.add('modal-hide');
+    document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
+    document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
+    document.getElementById("refactor_modal_gift_inventory").classList.remove('modal-showgift_inventory');
+    document.getElementById("refactor_modal_gift_inventory").classList.add('modal-hidegift_inventory');
+    
+    setTimeout(() => {
+        main.style.display = 'none';
+        current_gift.style.display = 'none';
+        document.getElementById("refactor_modal_gift_inventory").style.display = "none";
+
+    }, 500);
+    const articles = document.getElementsByClassName("megaboxi");
+    let bito = 0;
+    for (let index_s = 0; index_s < articles.length; index_s++) {
+        if (articles[index_s].id == "currentgiftinventory") {
+            let amountf = articles[index_s].data.split('_')[1];
+            bito = bito + Number(amountf);
+        }
+    }
+    document.getElementById("sellallnow").innerText = "Продать всё за "+bito +"?"
+}
+    // const response = await fetch('http://localhost:8000/sellall', {
+    //     method: 'POST',
+    //     headers: {
+    //     'Content-Type': 'application/json',
+    //     'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
+
+    //     },
+    //     body: JSON.stringify({
+    //         id: "457835158",
+    //         balance: "0.00",
+    //     })
+    // });
+
+    // if (!response.ok) {
+    //     window.reload();
+
+    // }
+    // const msg = await response.json();
+    // let new_bal = msg['new_balance']
+    
+    // document.getElementById("liquidGlass-effect").innerText = Number(new_bal);
+    // document.getElementById("bblol").style.width = 65 + 6 * (new_bal.length - 2) + "px";
+    // document.getElementById("toncoinsym").style.marginLeft = (Number(document.getElementById("bblol").style.width.slice(0, -2)) - 65) + 41 + "px";
+    // giftCounter = giftCounter - 1;
+    // document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
+    // document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
+    // document.getElementById("emojicount").innerText = "Emoji: "+giftCounter;
+    // const articles = document.getElementsByClassName("megaboxi");
+
+    // for (let index_s = 0; index_s < articles.length; index_s++) {
+    //     if (articles[index_s].data.split('_') == document.getElementById("currentgiftimg").data + ",$") {
+    //         try {
+    //             document.getElementById("allitems").removeChild(articles[index_s])
+    //         } catch {
+    //             document.getElementById("allitemsbig").removeChild(articles[index_s])
+
+    //         }
+    //         }
+
+    // }
+    // setTimeout(() => {
+    //     document.getElementById("refactor_modal_gift").style.display = "none";
+    // }, 500);
+})
+
+
+document.getElementById("wrapper_sellgift").addEventListener("click", async function sellGift(e) {
+    const response = await fetch('http://localhost:8000/sellgift', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
+
+        },
+        body: JSON.stringify({
+            owner_id: "457835158",
+            gift_name: document.getElementById("currentgiftimg").data[0],
+            gift_price: document.getElementById("currentgiftimg").data[1],
+            timestamp: document.getElementById("currentgiftimg").data[2]
+        })
+    });
+
+    if (!response.ok) {
+        window.reload();
+
+    }
+    const msg = await response.json();
+    let new_bal = msg['new_balance']
+    
+    document.getElementById("liquidGlass-effect").innerText = Number(new_bal);
+    document.getElementById("bblol").style.width = 65 + 6 * (new_bal.length - 2) + "px";
+    document.getElementById("toncoinsym").style.marginLeft = (Number(document.getElementById("bblol").style.width.slice(0, -2)) - 65) + 41 + "px";
+    giftCounter = giftCounter - 1;
+    document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
+    document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
+    document.getElementById("emojicount").innerText = "Emoji: "+giftCounter;
+    const articles = document.getElementsByClassName("megaboxi");
+
+    for (let index_s = 0; index_s < articles.length; index_s++) {
+        if (articles[index_s].data.split('_') == document.getElementById("currentgiftimg").data + ",$") {
+            try {
+                document.getElementById("allitems").removeChild(articles[index_s])
+                try {
+                    document.getElementById("allitemsbig").removeChild(articles[index_s])
+
+                } catch {
+                    continue
+                }
+            } catch {
+                document.getElementById("allitemsbig").removeChild(articles[index_s])
+
+            }
+            }
+
+    }
+    setTimeout(() => {
+        document.getElementById("refactor_modal_gift").style.display = "none";
+    }, 500);
+})
+
+document.getElementById("wrapper_all").addEventListener("click", (e) => {
+    document.getElementById("refactor_modal_gift_inventory").style.display = "block";
+    document.getElementById("refactor_modal_gift_inventory").classList.remove('modal-hidegift_inventory');
+    document.getElementById("refactor_modal_gift_inventory").classList.add('modal-showgift_inventory');
+    document.getElementById("refactor_modal_gift_all1").classList.remove('modal-showgift_all1');
+    document.getElementById("refactor_modal_gift_all1").classList.add('modal-hidegift_all1');
+    let main = document.getElementById("refactor_modal")
+    let current_gift = document.getElementById("refactor_modal_gift");
+    main.classList.remove('modal-show');
+    main.classList.add('modal-hide');
+    document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
+    document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
+   })
+
+document.getElementById("svapper_1_inventory").addEventListener("click", (e) => {
+    document.getElementById("refactor_modal_gift_inventory").classList.remove('modal-showgift_inventory');
+    document.getElementById("refactor_modal_gift_inventory").classList.add('modal-hidegift_inventory');
+    setTimeout(() => {
+        document.getElementById("refactor_modal_gift_inventory").style.display = "none";
+    }, 500);
+})
+
+document.getElementById("allitems").addEventListener('click', (e) => {
+    if (e.target.id === "currentgiftinventory" || 
+        e.target.id === "currentgiftinventory_img" ) {
+        
+        let giftInfo = e.target.data.split("_");
+        document.getElementById("refactor_modal_gift_inventory").style.display = "block";
+    document.getElementById("refactor_modal_gift_inventory").classList.remove('modal-showgift_inventory');
+    document.getElementById("refactor_modal_gift_inventory").classList.add('modal-hidegift_inventory');
+    document.getElementById("refactor_modal_gift_all1").classList.remove('modal-showgift_all1');
+    document.getElementById("refactor_modal_gift_all1").classList.add('modal-hidegift_all1');
+    let main = document.getElementById("refactor_modal")
+    let current_gift = document.getElementById("refactor_modal_gift");
+    main.classList.remove('modal-show');
+    main.classList.add('modal-hide');
+        document.getElementById("refactor_modal_gift").style.display = "block";
+        document.getElementById("refactor_modal_gift").classList.remove('modal-hidegift');
+        document.getElementById("refactor_modal_gift").classList.add('modal-showgift');
+        document.getElementById("currentgiftimg").src = giftNames[giftInfo[0]];
+        document.getElementById("currentgiftimg").data = giftInfo;
+        document.getElementById("giftginger").innerText = Number(giftInfo[1]);
+        document.getElementById("bblol_gift_pricer_1").style.width = 109 + 6 * (giftInfo[1].length - 5) + "px";
+        document.getElementById("toncoinbig").style.marginLeft = (Number(document.getElementById("bblol_gift_pricer_1").style.width.slice(0, -2)) - 109) + 32 + "px";
+        document.getElementById("refactor_modal_gift").data = giftInfo;
+    }
+});
+
+
+document.getElementById("allitemsbig").addEventListener('click', (e) => {
+    if (e.target.id === "currentgiftinventory" || 
+        e.target.id === "currentgiftinventory_img" ) {
+        
+        let giftInfo = e.target.data.split("_");
+        document.getElementById("refactor_modal_gift_inventory").style.display = "block";
+    document.getElementById("refactor_modal_gift_inventory").classList.remove('modal-showgift_inventory');
+    document.getElementById("refactor_modal_gift_inventory").classList.add('modal-hidegift_inventory');
+    document.getElementById("refactor_modal_gift_all1").classList.remove('modal-showgift_all1');
+    document.getElementById("refactor_modal_gift_all1").classList.add('modal-hidegift_all1');
+    let main = document.getElementById("refactor_modal")
+    let current_gift = document.getElementById("refactor_modal_gift");
+    main.classList.remove('modal-show');
+    main.classList.add('modal-hide');
+        document.getElementById("refactor_modal_gift").style.display = "block";
+        document.getElementById("refactor_modal_gift").classList.remove('modal-hidegift');
+        document.getElementById("refactor_modal_gift").classList.add('modal-showgift');
+        document.getElementById("currentgiftimg").src = giftNames[giftInfo[0]];
+        document.getElementById("currentgiftimg").data = giftInfo;
+        document.getElementById("giftginger").innerText = Number(giftInfo[1]);
+        document.getElementById("bblol_gift_pricer_1").style.width = 109 + 6 * (giftInfo[1].length - 5) + "px";
+        document.getElementById("toncoinbig").style.marginLeft = (Number(document.getElementById("bblol_gift_pricer_1").style.width.slice(0, -2)) - 109) + 32 + "px";
+        document.getElementById("refactor_modal_gift").data = giftInfo;
+    }
+});
+
+document.getElementById("svapper_1").addEventListener('click', (e) => {
+
+        document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
+        document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
+
+        setTimeout(() => {
+                    document.getElementById("refactor_modal_gift").style.display = "none";
+
+        }, 500);
+});
 
 document.getElementById("refactor").addEventListener("click", (e)=>{
     // document.getElementById("settingsphoto").transform="rotate(90deg)";
@@ -271,14 +670,102 @@ const response = await fetch('http://localhost:8000/auth', {
         let balance = msg[1];
         
         document.getElementById("profilepicture").src = photo_url;
-        document.getElementById("nickname").innerText = "Azer";
+        document.getElementById("nickname").innerText = nickname;
         document.getElementById("liquidGlass-effect").innerText = Number(balance);
-        document.getElementById("bblol").style.width = 65 + 6 * (balance.length - 3) + "px";
+        document.getElementById("bblol").style.width = 65 + 6 * (balance.length - 2) + "px";
         document.getElementById("toncoinsym").style.marginLeft = (Number(document.getElementById("bblol").style.width.slice(0, -2)) - 65) + 41 + "px";
+        
+        const all_items = msg[2];
+        giftCounter = all_items.length;
+        document.getElementById("emojicount").innerText = "Emoji: " + all_items.length
+        for (let index_s = 0; index_s < all_items.length; index_s++) {
+            let name_of_gift = all_items[index_s][1];
+            let price_of_gift = all_items[index_s][0];
+            let timestamp = all_items[index_s][2];
+            let new_gift_rn = document.createElement("div");
+            let new_gift_img = document.createElement("img");
+            new_gift_img.id = "currentgiftinventory_img";
+            new_gift_rn.className = "megaboxi"
+            new_gift_img.data = name_of_gift+"_"+price_of_gift+"_"+timestamp;
+            new_gift_rn.data = name_of_gift+"_"+price_of_gift+"_"+timestamp+"_"+"$";
+            new_gift_img.width = '85';
+            new_gift_img.height  = '78';
+            new_gift_img.src = giftNames[name_of_gift];
+            
+            new_gift_rn.id = "currentgiftinventory";
+            
+            let wrapper_1 = document.createElement("div");
+            wrapper_1.className="wrapper_gift_pricer";
+            let wrapper_2 = document.createElement("div");
+            wrapper_2.className="liquidGlass-wrapper_gift_pricer button_gift_pricer";
+            let wrapper_3 = document.createElement("div");
+            wrapper_3.className="liquidGlass-effect_gift_pricer";
+            let wrapper_4 = document.createElement("div");
+            wrapper_4.className="liquidGlass-tint_gift_pricer";
+            let wrapper_5 = document.createElement("div");
+            wrapper_5.className="liquidGlass-shine_gift_pricer";
+            let wrapper_6 = document.createElement("img");
+            wrapper_6.id = "toncoinmin";
+            wrapper_6.src = "ton_symbol 1.png";
+            wrapper_2.id = "bblol_gift_pricer";
+            wrapper_3.innerText = Number(price_of_gift);
+            wrapper_2.style.width = 35 + 4 * (price_of_gift.length - 3) + "px";
+            wrapper_6.style.marginLeft = (Number(wrapper_2.style.width.slice(0, -2)) - 35) + 20 + "px";
+            wrapper_2.appendChild(wrapper_6);
+            wrapper_2.appendChild(wrapper_3);
+            wrapper_2.appendChild(wrapper_4);
+            wrapper_2.appendChild(wrapper_5);
+            wrapper_1.appendChild(wrapper_2);
+            new_gift_rn.appendChild(new_gift_img);
+            document.getElementById("allitems").appendChild(new_gift_rn);
+            new_gift_rn.appendChild(wrapper_1)
+
+
+            
+            let new_gift_rn_big = document.createElement("div");
+            let new_gift_img_big = document.createElement("img");
+            new_gift_img_big.id = "currentgiftinventory_img";
+            new_gift_rn_big.className = "megaboxi"
+            new_gift_img_big.data = name_of_gift+"_"+price_of_gift+"_"+timestamp;
+            new_gift_rn_big.data = name_of_gift+"_"+price_of_gift+"_"+timestamp+"_"+"$";
+            new_gift_img_big.width = '85';
+            new_gift_img_big.height  = '78';
+            new_gift_img_big.src = giftNames[name_of_gift];
+            
+            new_gift_rn_big.id = "bigcurrentitem";
+
+            let wrapper_11 = document.createElement("div");
+            wrapper_11.className="wrapper_gift_pricer";
+            let wrapper_22 = document.createElement("div");
+            wrapper_22.className="liquidGlass-wrapper_gift_pricer button_gift_pricer";
+            let wrapper_33 = document.createElement("div");
+            wrapper_33.className="liquidGlass-effect_gift_pricer";
+            let wrapper_44 = document.createElement("div");
+            wrapper_44.className="liquidGlass-tint_gift_pricer";
+            let wrapper_55 = document.createElement("div");
+            wrapper_55.className="liquidGlass-shine_gift_pricer";
+            let wrapper_66 = document.createElement("img");
+            wrapper_66.id = "toncoinmin";
+            wrapper_66.src = "ton_symbol 1.png";
+            wrapper_22.id = "bblol_gift_pricer";
+            wrapper_33.innerText = Number(price_of_gift);
+            wrapper_22.style.width = 35 + 4 * (price_of_gift.length - 3) + "px";
+            wrapper_66.style.marginLeft = (Number(wrapper_22.style.width.slice(0, -2)) - 35) + 20 + "px";
+            wrapper_22.appendChild(wrapper_66);
+            wrapper_22.appendChild(wrapper_33);
+            wrapper_22.appendChild(wrapper_44);
+            wrapper_22.appendChild(wrapper_55);
+            wrapper_11.appendChild(wrapper_22);
+            new_gift_rn_big.appendChild(new_gift_img_big);
+            document.getElementById("allitemsbig").appendChild(new_gift_rn_big);
+            new_gift_rn_big.appendChild(wrapper_11)
+        }
+
     } catch {
         document.getElementById("profilepicture").src = "unknown";
         document.getElementById("nickname").innerText = "Unknown";
     }
+    
     }
 //referal();
 authe();
@@ -383,6 +870,11 @@ const SYMBOL_MAP = {
 };
 
 
+const giftNames = {
+    "jollychimp": "https://static.tildacdn.one/tild3438-3135-4534-a635-613566653233/GiftsGiftsGifts_AgAE.png",
+    "crystalball":"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_032.webp",
+}
+
 /**
  * @type {number} The minimum spin time in seconds
  */
@@ -439,7 +931,7 @@ async function spin(elem) {
                 'Content-Type': 'application/json',
                 'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
             },
-            body: JSON.stringify({ roullete_id: roullete_id })
+            body: JSON.stringify({ roullete_id: 6 })
         });
 
         if (!response.ok) {

@@ -47,10 +47,10 @@ body {
   --c-light: #fff;
   --c-dark: #000;
 
-
+  --c-blue: #aef0f8;
     margin: 0;
   --glass-reflex-dark: 1;
-  --glass-reflex-light: 1;
+  --glass-reflex-light: 0.9;
 
   --saturation: 150%;
 
@@ -108,8 +108,10 @@ color: #E6D9D9;
 }
 
 .start-button {
+  position: absolute;
     display: block;
     margin: 1em auto;
+    left: -100px;
 }
 
 #container {
@@ -652,7 +654,7 @@ width: 328px;
 
 
 #wrapper_2{
-    z-index: 3;
+    z-index: 100;
     position: relative;
     width: 159px;
     height: 45px;
@@ -676,7 +678,7 @@ width: 328px;
     animation: slidetoright 0.3s ease-in-out forwards; /* Apply the animation */
 }
 #slider.left{
-    animation: slidetoleft 0.3s ease-in-out forwards; /* Apply the animation */
+    animation: slidetoleft_ 0.3s ease-in-out forwards; /* Apply the animation */
 }
 @keyframes slidetoright {
   from {
@@ -686,7 +688,7 @@ width: 328px;
       transform: translateX(100%); /* End at its original position */
     }
   }
-@keyframes slidetoleft {
+@keyframes slidetoleft_ {
   from {
       transform: translateX(100%); /* Start off-screen to the left */
     }
@@ -779,7 +781,7 @@ width: 159px;
 
 
 #wrapper_3{
-    z-index: 3;
+    z-index: 100;
     position: relative;
     width: 159px;
     height: 45px;
@@ -984,6 +986,48 @@ width: 159px;
     margin-left: 84px;
     margin-top: 19px;
     border-radius: 296px;
+}
+
+#refactor_1.active{
+  animation: slidetoleft 0.4s ease-in-out forwards;
+}
+
+@keyframes slidetoleft {
+  from {
+    transform: translateX(20%); 
+
+  }
+  to {
+    transform: translateX(0%)
+  }
+}
+
+#refactor_2.active{
+  animation: slidetoleft_more 0.4s ease-in-out forwards;
+}
+
+@keyframes slidetoleft_more {
+  from {
+    transform: translateX(40%); 
+
+  }
+  to {
+    transform: translateX(0%)
+  }
+}
+
+#refactor_3.active{
+  animation: slidetoleft_more_more 0.4s ease-in-out forwards;
+}
+
+@keyframes slidetoleft_more_more {
+  from {
+    transform: translateX(60%); 
+
+  }
+  to {
+    transform: translateX(0%)
+  }
 }
 
 
@@ -1235,7 +1279,7 @@ width: 160px;
     margin-top: 9px;
     border-radius: 34px;
     margin: 9px auto; /* Центрируем */
-
+    margin-left: 2px;
 }
 
 
@@ -1672,7 +1716,7 @@ align-content: center;
 
 
 #svapper{
-  z-index: 100;
+  z-index: 101;
 position: absolute;
 top: 11px;
 left: calc(50% - 155px/2);
@@ -1682,7 +1726,17 @@ background: #EFEFEF;
 border-radius: 6.5px;
 }
 
-
+#svapper_1{
+  pointer-events: all;
+  z-index: 1010;
+position: absolute;
+top: 11px;
+left: calc(50% - 155px/2);
+width: 155px;
+height: 5px;
+background: #EFEFEF;
+border-radius: 6.5px;
+}
 
 
 
@@ -2490,4 +2544,1237 @@ width: 242px;
   height: 28px;
   margin-top: 4px;
   margin-left: 14px;
+}
+
+
+#wrapper_inv{
+    position: relative;
+    width: 328px;
+    height: 180px;
+    left: calc(50% - 328px/2);
+    top: 87px;
+    border-radius: 24px;
+}
+
+
+.liquidGlass-wrapper_inv {
+  position: relative;
+  
+  display: flex;
+  border-radius: 296px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_inv {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 296px;
+
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_inv {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgb(255, 255, 255);
+  opacity: 0.07;
+  border-radius: 24px;
+
+}
+
+.liquidGlass-shine_inv {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 24px;;
+
+  box-shadow: inset 1px 0.5px 0px -0.3px rgb(174, 240, 248),
+    inset -1px -0.6px 0.5px -0.3px rgb(174, 240, 248);
+}
+
+.button_inv {
+  width: 328px;
+  height: 180px;
+    border-radius: 24px;
+}
+
+.button_inv,
+.button_inv > div {
+}
+#bblol_inv{
+    
+    border-radius: 24px;
+}
+
+
+
+#emojicount{
+  position: relative;
+  height: 20px;
+  z-index: 10;
+  margin-top: 13px;
+  margin-left: 14px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+color: #FFFFFF;
+}
+
+
+
+
+#wrapper_all{
+    position: relative;
+    width: 60px;
+    height: 26px;
+    margin-left: 179px;
+    margin-top: 9px;
+    border-radius: 34px;
+}
+
+#wrapper_all.active{
+  animation: slidetoright_ 0.3s ease-in-out forwards;
+}
+#emojicount.active{
+  animation: slidetoright_ 0.3s ease-in-out forwards;
+}
+
+@keyframes slidetoright_ {
+  from {
+    transform: translateX(-30%); 
+  }
+  to {
+    transform: translateX(0%);
+  }
+  
+}
+
+.liquidGlass-wrapper_all {
+  position: relative;
+  
+  display: flex;
+  border-radius: 34px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_all {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 34px;
+
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_all {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 0.3;
+  border-radius: 34px;
+
+}
+
+.liquidGlass-shine_all {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 34px;;
+
+  box-shadow: inset 1px 0.5px 0px -0.3px rgb(174, 240, 248),
+    inset -1px -0.6px 0.5px -0.3px rgb(174, 240, 248);
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 18px;
+text-align: center;
+color: #FFFFFF;
+align-content: center;
+}
+
+.button_all {
+    width: 60px;
+    height: 26px;
+    border-radius: 34px;
+}
+
+.button_all,
+.button_all > div {
+}
+#bblol_all{
+    
+    border-radius: 34px;
+}
+
+
+#allitems{
+  display: flex;
+  pointer-events: all;
+  z-index: 3;
+  height: 78px;
+  width: 310px;
+  margin-top: 50px;
+  margin-left: -299px;
+  background: none;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  align-items: center;
+  }
+
+#allitems::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+#currentgiftinventory{
+  pointer-events: all;
+  z-index: 3;
+  position: relative;
+  width: 85px;
+  height: 78px;
+  margin-left: 15px;
+  border-radius: 16px;
+}
+
+
+
+
+
+
+
+
+#refactor_modal_gift{
+    position: fixed; /* Меняем на fixed */
+    width: 100%;
+    height: 65vh; /* Занимает 70% высоты экрана */
+    border-radius: 16px 16px 0 0;
+    bottom: -65vh; /* Начальное положение - скрыто внизу */
+    left: 0;
+    z-index: 1000;
+}
+
+.liquidGlass-wrapper_modal_gift {
+    pointer-events: none;
+
+  position: relative;
+  display: flex;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 0px rgba(0, 0, 0, 0.1);
+}
+
+.liquidGlass-effect_modal_gift {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  border-radius: 16px 16px 0 0;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_modal_gift{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 40%;
+  background-blend-mode: hard-light;
+  filter: blur(0px);
+  backdrop-filter: blur(0px);
+  border-radius: 16px 16px 0 0;
+}
+
+.liquidGlass-shine_modal_gift {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  box-shadow: inset 0.9px .9px 0.9px -0.6px rgb(174, 240, 248),
+              inset -0.9px -0.9px 0.9px -0.6px rgb(174, 240, 248);
+}
+
+.button_modal_gift {
+    width: 100%;
+    height: 100%; /* Занимает всю высоту модалки */
+    border-radius: 16px 16px 0 0;
+}
+
+.button_modal_gift,
+.button_modal_gift > div {
+    border-radius: 16px 16px 0 0;
+}
+#bblol_modal_gift{
+    border-radius: 34px 34px 0px 0px;
+}
+
+.modal-showgift {
+    animation: upToDown_ 0.5s ease-in-out forwards;
+}
+
+.modal-hidegift {
+    animation: downToUp_ 0.5s ease-out forwards;
+}
+
+@keyframes upToDown_ {
+    from {
+        bottom: -65vh; /* Начальное положение */
+    }
+    to {
+        bottom: 0; /* Прижимаем к низу экрана */
+    }
+}
+
+@keyframes downToUp_ {
+    from {
+        bottom: 0; /* Начальное положение */
+    }
+    to {
+        bottom: -65vh; /* Прижимаем к низу экрана */
+    }
+}
+
+
+#currentgift{
+  position: relative;
+  width: 318px;
+  height: 299px;
+  background: none;
+  z-index: 100;
+  border-radius: 26px;
+  margin-top: 47px;
+  margin-left: calc(50% - 318px/2);
+}
+
+
+
+
+
+
+
+
+
+.liquidGlass-wrapper_gift_pricer {
+  position: relative;
+  
+  display: flex;
+    
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  backdrop-filter: blur(1px);
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_gift_pricer {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  margin-left: 2px;
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+
+    display: flex;
+   align-items: center;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 9px;
+line-height: 11px;
+text-align: center;
+color: #FFFFFF;
+}
+
+.liquidGlass-tint_gift_pricer {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  filter: blur(2px);
+
+  background: #000000;
+  opacity: 0.08;
+}
+
+.liquidGlass-shine_gift_pricer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+
+  box-shadow: inset 0.7px 0.3px 0.1px -0.2px rgb(174, 240, 248),
+    inset -0.7px -0.3px 0.1px -0.1px rgb(174, 240, 248);
+}
+.wrapper_gift_pricer {
+  position: relative;
+  display: flex;
+  margin-top: -79px;
+  margin-right: 4px;
+  gap: 25px;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: flex-end;
+}
+.button_gift_pricer {
+width: 35px;
+  height: 15px;
+
+  border-radius: 24px;
+}
+
+.button_gift_pricer,
+.button_gift_pricer > div {
+
+  border-radius: 24px;
+}
+
+#toncoinmin{
+  position: relative;
+  z-index: 3;
+  width: 12px;
+  height: 12px;
+  margin-top: 1px;
+  margin-left: 20px;
+}
+
+
+
+
+
+
+
+.liquidGlass-wrapper_gift_pricer_1 {
+  position: relative;
+  
+  display: flex;
+    
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+
+  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_gift_pricer_1 {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  margin-left: 2px;
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  isolation: isolate;
+
+    display: flex;
+   align-items: center;
+
+
+
+}
+
+.liquidGlass-tint_gift_pricer_1 {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  filter: blur(2px);
+
+  background: #000000;
+  opacity: 0.08;
+}
+
+.liquidGlass-shine_gift_pricer_1 {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+
+  box-shadow: inset 0.9px 0.5px 0.1px -0.2px rgb(174, 240, 248),
+    inset -0.9px -0.5px 0.1px -0.1px rgb(174, 240, 248);
+  
+  }
+.wrapper_gift_pricer_1 {
+  position: absolute;
+  
+  display: flex;
+  margin-top: 13px;
+  margin-left: 201px;
+  gap: 25px;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: flex-end;
+}
+.button_gift_pricer_1 {
+
+}
+
+.button_gift_pricer_1,
+.button_gift_pricer_1 > div {
+
+  border-radius: 24px;
+}
+#bblol_gift_pricer_1{
+width: 109px;
+  height: 37px;
+
+  border-radius: 24px;
+}
+
+#giftginger{
+  width: 40px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 23px;
+  /* identical to box height */
+  color: #FFFFFF;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  margin-left: 7px;
+  z-index: 2;
+}
+#toncoinbig{
+  position: relative;
+  width: 25px;
+  height: 25px;
+margin-top: 5px;
+margin-right: 7px;
+z-index: 10;
+}
+
+
+
+
+
+#wrapper_sellgift{
+  pointer-events: all;
+    z-index: 1010;
+    position: relative;
+    width: 147px;
+    height: 36px;
+    border-radius: 24px;
+    margin-top: 0px;
+    margin-left: 8px;
+}
+
+
+.liquidGlass-wrapper_sellgift {
+  position: relative;
+  
+  display: flex;
+  border-radius: 34px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 2px 2px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_sellgift{
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 34px;
+
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_sellgift {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+    background: #1ABC9C;
+    opacity: 60%;
+    background-blend-mode: hard-light;
+    filter: blur(4px);
+    backdrop-filter: blur(10px);
+    border-radius: 34px;
+
+}
+
+.liquidGlass-shine_sellgift {
+
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 34px;
+
+  box-shadow: inset 0.7px 0.5px 0.4px -0.2px rgb(174, 240, 248),
+    inset -0.7px -0.5px 0.4px -0.2px rgb(174, 240, 248);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 23px;
+    text-align: center;
+    color: white;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+
+    
+}
+
+.button_sellgift {
+width: 147px;
+    height: 36px;
+    border-radius: 12px;
+    
+}
+
+.button_sellgift,
+.button_sellgift > div {
+      border-radius: 12px;
+    }
+#bblol_sellgift{
+    border-radius: 12px;
+}
+
+
+
+
+#wrapper_with{
+    z-index: 3;
+    pointer-events: all;
+    position: relative;
+    width: 147px;
+    height: 36px;
+    border-radius: 24px;
+    margin-top: -36px;
+    margin-left: 163px;
+}
+
+
+.liquidGlass-wrapper_with {
+  position: relative;
+  
+  display: flex;
+  border-radius: 34px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 2px 2px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_with{
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 34px;
+
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_with {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+    background: #F5F5F5;
+    opacity: 30%;
+    background-blend-mode: hard-light;
+    filter: blur(4px);
+    backdrop-filter: blur(10px);
+    border-radius: 34px;
+
+}
+
+.liquidGlass-shine_with {
+
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 34px;
+
+  box-shadow: inset 0.7px 0.5px 0.4px -0.2px rgb(174, 240, 248),
+    inset -0.7px -0.5px 0.4px -0.2px rgb(174, 240, 248);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 23px;
+    text-align: center;
+    color: white;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+
+    
+}
+
+.button_with {
+width: 147px;
+    height: 36px;
+    border-radius: 12px;
+}
+
+.button_with,
+.button_with > div {
+      border-radius: 12px;
+}
+#bblol_with{
+    border-radius: 12px;
+
+}
+
+
+
+
+#wrapper_sellall{
+    z-index: 100;
+    position: absolute;
+    width: 159px;
+    height: 34px;
+    border-radius: 24px;
+    margin-top: 139px;
+    margin-left:84px;
+}
+
+
+.liquidGlass-wrapper_sellall {
+  position: relative;
+  
+  display: flex;
+  border-radius: 34px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 2px 2px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_sellall{
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 34px;
+
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_sellall {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+    background: #1ABC9C;
+    opacity: 60%;
+    background-blend-mode: hard-light;
+    filter: blur(4px);
+    backdrop-filter: blur(10px);
+    border-radius: 34px;
+
+}
+
+.liquidGlass-shine_sellall {
+
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 34px;
+
+  box-shadow: inset 0.7px 0.5px 0.4px -0.2px rgb(174, 240, 248),
+    inset -0.7px -0.5px 0.4px -0.2px rgb(174, 240, 248);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 23px;
+    text-align: center;
+    color: white;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+
+    
+}
+
+.button_sellall {
+width: 159px;
+    height: 34px;
+    border-radius: 12px;
+}
+
+.button_sellall,
+.button_sellall > div {
+      border-radius: 12px;
+}
+#bblol_sellall{
+    border-radius: 12px;
+
+}
+
+
+#wrapper_sellall.active{
+  animation: fromlefttoright 0.3s ease-out forwards;
+}
+
+@keyframes fromlefttoright {
+   from {
+    transform: translateX(-30%); 
+  }
+    to {
+      transform: translateX(0%);
+    }
+}
+
+
+
+
+
+
+#refactor_modal_gift_inventory{
+    position: fixed; /* Меняем на fixed */
+    width: 100%;
+    height: 75vh; /* Занимает 70% высоты экрана */
+    border-radius: 16px 16px 0 0;
+    bottom: -75vh; /* Начальное положение - скрыто внизу */
+    left: 0;
+    z-index: 1000;
+}
+
+.liquidGlass-wrapper_modal_gift_inventory {
+    pointer-events: none;
+
+  position: relative;
+  display: flex;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 0px rgba(0, 0, 0, 0.1);
+}
+
+.liquidGlass-effect_modal_gift_inventory {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  border-radius: 16px 16px 0 0;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_modal_gift_inventory{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 30%;
+  background-blend-mode: hard-light;
+  filter: blur(0px);
+  backdrop-filter: blur(0px);
+  border-radius: 16px 16px 0 0;
+}
+
+.liquidGlass-shine_modal_gift_inventory {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  box-shadow: inset 1.9px 1.3px 1.9px -0.6px rgb(174, 240, 248),
+              inset -1.9px -1.3px 0.9px -0.6px rgb(174, 240, 248);
+}
+
+.button_modal_gift_inventory {
+    width: 100%;
+    height: 100%; /* Занимает всю высоту модалки */
+    border-radius: 16px 16px 0 0;
+}
+
+.button_modal_gift_inventory,
+.button_modal_gift_inventory > div {
+    border-radius: 16px 16px 0 0;
+}
+#bblol_modal_gift_inventory{
+    border-radius: 34px 34px 0px 0px;
+}
+
+.modal-showgift_inventory {
+    animation: upToDown_inv 0.5s ease-in-out forwards;
+}
+
+.modal-hidegift_inventory {
+    animation: downToUp_inv 0.5s ease-out forwards;
+}
+
+@keyframes upToDown_inv {
+    from {
+        bottom: -75vh; /* Начальное положение */
+    }
+    to {
+        bottom: 0; /* Прижимаем к низу экрана */
+    }
+}
+
+@keyframes downToUp_inv {
+    from {
+        bottom: 0; /* Начальное положение */
+    }
+    to {
+        bottom: -75vh; /* Прижимаем к низу экрана */
+    }
+}
+#svapper_1_inventory{
+pointer-events: all;
+position: relative;
+width: 155px;
+height: 8px;
+z-index: 300;
+background: #EFEFEF;
+border-radius: 6.5px;
+margin-top: 16px;
+margin-left: calc(50% - 155px/2);
+}
+
+
+
+
+
+
+
+#allitemsbig{
+  display:flex;
+  z-index: 100;
+  pointer-events: all;
+  position: absolute;
+    align-content: flex-start;
+
+  width: 334px;
+  max-width: 334px;
+
+  height: 90%;
+  margin-left: calc(50% - 334px/2);
+  margin-top: 41px;
+  background: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex-wrap:wrap;
+}
+#allitemsbig::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+#bigcurrentitem{
+  position: relative;
+  width: 86px;
+  height: 79px;
+  margin-left: 19px;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#refactor_modal_gift_all1{
+    position: fixed; /* Меняем на fixed */
+    width: 100%;
+    height: 25vh; /* Занимает 70% высоты экрана */
+    border-radius: 16px 16px 0 0;
+    bottom: -25vh; /* Начальное положение - скрыто внизу */
+    left: 0;
+    z-index: 1000;
+}
+
+.liquidGlass-wrapper_modal_gift_all1 {
+    pointer-events: none;
+
+  position: relative;
+  display: flex;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 0px rgba(0, 0, 0, 0.1);
+}
+
+.liquidGlass-effect_modal_gift_all1 {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  border-radius: 16px 16px 0 0;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_modal_gift_all1{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 40%;
+  background-blend-mode: hard-light;
+  filter: blur(0px);
+  backdrop-filter: blur(0px);
+  border-radius: 16px 16px 0 0;
+}
+
+.liquidGlass-shine_modal_gift_all1 {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  box-shadow: inset 0.9px .9px 0.9px -0.6px rgb(174, 240, 248),
+              inset -0.9px -0.9px 0.9px -0.6px rgb(174, 240, 248);
+}
+
+.button_modal_gift_all1 {
+    width: 100%;
+    height: 100%; /* Занимает всю высоту модалки */
+    border-radius: 16px 16px 0 0;
+}
+
+.button_modal_gift_all1,
+.button_modal_gift_all1 > div {
+    border-radius: 16px 16px 0 0;
+}
+#bblol_modal_gift_all1{
+    border-radius: 34px 34px 0px 0px;
+}
+
+.modal-showgift_all1 {
+    animation: upToDown_all 0.5s ease-in-out forwards;
+}
+
+.modal-hidegift_all1 {
+    animation: downToUp_all 0.5s ease-out forwards;
+}
+
+@keyframes upToDown_all {
+    from {
+        bottom: -25vh; /* Начальное положение */
+    }
+    to {
+        bottom: 0; /* Прижимаем к низу экрана */
+    }
+}
+
+@keyframes downToUp_all {
+    from {
+        bottom: 0; /* Начальное положение */
+    }
+    to {
+        bottom: -25vh; /* Прижимаем к низу экрана */
+    }
+}
+
+
+#slider2_{
+  z-index: 100;
+  pointer-events: all;
+position: relative;
+width: 155px;
+height: 5px;
+margin-top: 11px;
+margin-left: calc(50% - 155px/2);
+background: #EFEFEF;
+border-radius: 6.5px;
+}
+
+#sellallnow{
+z-index: 100;
+position: absolute;
+width: 217px;
+height: 23px;
+margin-top: 64px;
+margin-left: calc(50% - 217px/2);
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 19px;
+line-height: 23px;
+text-align: center;
+color: #FFFFFF;
+}
+
+
+#wrapper_sellall_now{
+    z-index: 100;
+    pointer-events: all;
+    position: absolute;
+    width: 201px;
+    height: 45px;
+    border-radius: 24px;
+    margin-top: 116px;
+    margin-left: calc(50% - 201px / 2 );
+}
+
+
+.liquidGlass-wrapper_sellall_now {
+  position: relative;
+  
+  display: flex;
+  border-radius: 34px;
+
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 2 2px 2px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_sellall_now{
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: 34px;
+
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_sellall_now {
+  z-index: 1;
+  position: absolute;
+
+
+  inset: 0;
+    background-blend-mode: normal, color-dodge;
+    background: linear-gradient(0deg, rgba(26, 188, 156, 1), rgba(26, 188, 156, 1)), #0C0C0C;
+    opacity: 0.6;
+    filter: blur(4px);
+    backdrop-filter: blur(10px);
+    border-radius: 34px;
+
+}
+
+.liquidGlass-shine_sellall_now {
+
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  border-radius: 34px;
+
+  box-shadow: inset 0 0 0 1px
+      color-mix(
+        in srgb,
+        var(--c-blue) calc(var(--glass-reflex-light) * 0%),
+        transparent
+      ),
+    inset 1.5px 2px 0px -1px color-mix(in srgb, var(--c-blue)
+          calc(var(--glass-reflex-light) * 100%), transparent),
+    inset -1.5px -2px 0px -1px color-mix(in srgb, var(--c-blue)
+          calc(var(--glass-reflex-light) * 100%), transparent),
+    inset -3px -7px 1px -6px color-mix(in srgb, var(--c-blue)
+          calc(var(--glass-reflex-light) * 60%), transparent),
+    0px 6px 16px 0px
+      color-mix(
+        in srgb,
+        var(--c-dark) calc(var(--glass-reflex-dark) * 0%),
+        transparent
+      );
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 23px;
+    text-align: center;
+    color: white;
+    justify-items: center;
+    align-items: center;
+    align-content: center;    
+}
+
+.button_sellall_now {
+    width: 201px;
+    height: 45px;
+    border-radius: 16px;
+}
+
+.button_sellall_now,
+.button_sellall_now > div {
+      border-radius: 16px;
+}
+#bblol_sellall_now{
+    border-radius: 16px;
+
+}
+
+
+#wrapper_sellall.active_shake{
+  animation: shake 0.5s ease-in-out;
+  background-color: red;
 }

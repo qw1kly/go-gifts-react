@@ -19,7 +19,7 @@ export function openconnect() {
             colorsSet: {
                 [THEME.DARK]: {
                     connectButton: {
-                        background: '#1ABC9C'
+                        background: '#1ABC9C',
                     }
                 },
                 [THEME.LIGHT]: {
