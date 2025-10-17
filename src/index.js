@@ -8,6 +8,49 @@ import confetti from 'canvas-confetti';
 import {init, openTelegramLink } from '@telegram-apps/sdk';
 //init()
 
+
+
+const socket = new WebSocket("ws://localhost:8000/ws/live-wins");
+
+
+socket.addEventListener("message", (event) => {
+
+        let live_gift = document.createElement("img");
+        live_gift.id = "livegiftsettings";
+        live_gift.src = giftNames[event.data];
+        live_gift.style.opacity = "0";
+        live_gift.style.transform = "translateX(-50px) scale(0.5)";
+        live_gift.style.transition = "all 0.5s ease-out";
+        document.getElementById("liveitems").prepend(live_gift);
+        if ( document.getElementById("liveitems").children.length > 5) {
+            document.getElementById("liveitems").removeChild(document.getElementById("liveitems").lastChild);
+        }
+        setTimeout(() => {
+            live_gift.style.opacity = "1";
+            live_gift.style.transform = "translateX(0) scale(1)";
+        }, 100);
+    
+});
+
+document.getElementById("lightfast").addEventListener("click", (event) => {
+    console.log(document.getElementById("lightfast").className);
+    
+    if (document.getElementById("lightfast").className.includes("active")) {
+        document.getElementById("lightfast").classList.remove("active")
+        document.getElementById("lightfast").classList.add("nonactiv")
+        document.getElementById("lightfast").src = "Flash on.png";
+        fast_spin = false;
+
+    } else if (!document.getElementById("lightfast").className.includes("active")) {
+        document.getElementById("lightfast").classList.remove("nonactiv")
+        document.getElementById("lightfast").classList.add("active")
+        fast_spin = true;
+        document.getElementById("lightfast").src = "Conflict.png";
+    }
+})
+
+let fast_spin = false;
+
 let giftCounter = 0;
 
 const deposit = document.getElementById("refactor_buy");
@@ -67,6 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const giftreturn = document.getElementById("bblol_14_gift");
     const showmodalgift = document.getElementById("bblol_gift");
     const starmodalgift = document.getElementById("bblol_stars");
+    const docer = document.getElementById("refactor_referal");
+    const docer_2 = document.getElementById("refactor_referal_1");
 
     // Изначально активируем первую кнопку
     tint3.classList.add('active');
@@ -86,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!tint3.classList.contains('active')) {
             // Активируем эту кнопку
-            
             document.getElementById("slider").style.display = 'block';
             document.getElementById("slider").classList.add('left');
             button4.setAttribute('disabled', true);
@@ -99,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 tint3.classList.add('active');
                 shine3.classList.add('active');
+        
                 document.getElementById("slider").style.display = 'none';
                 document.getElementById("slider").classList.remove('left');
                 document.getElementById("refactor_1").classList.remove('active');
@@ -131,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 700);
             setTimeout(() => {
                 tint4.classList.add('active');  
+                
                 shine4.classList.add('active');  
                 document.getElementById("slider").style.display = 'none';
                 document.getElementById("wrapper_sellall").classList.remove("active");
@@ -279,6 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let invite_handler = document.getElementById("bblol_invite");
     invite_handler.addEventListener("click", (e) => {
+        return;
         const shareData = "https://t.me/share/url?url=https://t.me/testantiplug_bot/referal?startapp"+"="+"34013"
         openTelegramLink(shareData);   
     });
@@ -295,9 +342,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 });
+
+let icones_path = {
+ 0: ["Slot Machine (1).png", "Slot Machine (2).png"],
+ 3: ["User.png", "User (1).png"]
+}
+
 let winner = 0;
 
-let index_icons = 1;
+let index_icons = 6;
 
 let roullete_id = 1;
 
@@ -329,7 +382,7 @@ document.getElementById("wrapper_sellall_now").addEventListener("click", async f
     giftCounter = 0;
     document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
     document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
-    document.getElementById("emojicount").innerText = "Emoji: "+giftCounter;
+    document.getElementById("emojicount").innerText = "Gifts: "+giftCounter;
    
     let messout = 1;
     let gessout = 1;
@@ -396,7 +449,7 @@ document.getElementById("wrapper_with").addEventListener("click", async function
     giftCounter = giftCounter - 1;
     document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
     document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
-    document.getElementById("emojicount").innerText = "Emoji: "+giftCounter;
+    document.getElementById("emojicount").innerText = "Gifts: "+giftCounter;
     const articles = document.getElementsByClassName("megaboxi");
 
     for (let index_s = 0; index_s < articles.length; index_s++) {
@@ -420,6 +473,41 @@ document.getElementById("wrapper_with").addEventListener("click", async function
         document.getElementById("refactor_modal_gift").style.display = "none";
     }, 500);
 })
+function forceReflow(element) {
+  void element.offsetHeight;
+}
+
+
+document.getElementById("profileiconbar").addEventListener("click", (e) =>  {
+    document.getElementById("slotmachinea").style.color = "#FFFFFF";
+    document.getElementById("slotmachine").src = "Slot Machine (2).png";
+    document.getElementById("profilepic").src = "User (1).png";
+    document.getElementById("profilea").style.color = "#22F3C9";
+    document.getElementById("profileicon").classList.add("active");
+    document.getElementById("profileicon").style.display = "block";
+    document.getElementById("roulleteicon").classList.remove("active");
+    document.getElementById("roulleteicon").style.display='none';
+    
+    setTimeout(() => {
+        document.getElementById("profileicon").style.zIndex = "0";
+        forceReflow(document.getElementById("profileicon"));
+    }, 1600);
+})
+
+document.getElementById("roulleteiconbar").addEventListener("click", (e) =>  {
+    document.getElementById("slotmachinea").style.color = "#22F3C9";
+    document.getElementById("slotmachine").src = "Slot Machine (1).png";
+    document.getElementById("profilepic").src = "User.png";
+    document.getElementById("profilea").style.color = "#FFFFFF";
+    
+    document.getElementById("roulleteicon").classList.add("active");
+    document.getElementById("roulleteicon").style.display = "block";
+    document.getElementById("profileicon").classList.remove("active");
+    
+    document.getElementById("profileicon").style.display='none';
+    
+})
+
 
 
 document.getElementById("wrapper_sellall").addEventListener("click", async function sellAll(e) {
@@ -532,7 +620,7 @@ document.getElementById("wrapper_sellgift").addEventListener("click", async func
     giftCounter = giftCounter - 1;
     document.getElementById("refactor_modal_gift").classList.remove('modal-showgift');
     document.getElementById("refactor_modal_gift").classList.add('modal-hidegift');
-    document.getElementById("emojicount").innerText = "Emoji: "+giftCounter;
+    document.getElementById("emojicount").innerText = "Gifts: "+giftCounter;
     const articles = document.getElementsByClassName("megaboxi");
 
     for (let index_s = 0; index_s < articles.length; index_s++) {
@@ -584,7 +672,6 @@ document.getElementById("allitems").addEventListener('click', (e) => {
         e.target.id === "currentgiftinventory_img" ) {
         
         let giftInfo = e.target.data.split("_");
-        document.getElementById("refactor_modal_gift_inventory").style.display = "block";
     document.getElementById("refactor_modal_gift_inventory").classList.remove('modal-showgift_inventory');
     document.getElementById("refactor_modal_gift_inventory").classList.add('modal-hidegift_inventory');
     document.getElementById("refactor_modal_gift_all1").classList.remove('modal-showgift_all1');
@@ -677,7 +764,7 @@ const response = await fetch('http://localhost:8000/auth', {
         
         const all_items = msg[2];
         giftCounter = all_items.length;
-        document.getElementById("emojicount").innerText = "Emoji: " + all_items.length
+        document.getElementById("emojicount").innerText = "Gifts: " + all_items.length
         for (let index_s = 0; index_s < all_items.length; index_s++) {
             let name_of_gift = all_items[index_s][1];
             let price_of_gift = all_items[index_s][0];
@@ -810,12 +897,12 @@ const ICONS = {
           "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_069.webp", 
           "https://fragment.com/file/gifts/genielamp/thumb.webp", 
           "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_006.webp"],
-    6 : ["https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_037.webp",
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_032.webp",
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_044.webp", 
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_086.webp", 
-         "https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_072.webp", 
-         "https://fragment.com/file/gifts/durovscap/thumb.webp"],
+    6 : ["https://static.tildacdn.one/tild3438-3135-4534-a635-613566653233/GiftsGiftsGifts_AgAE.png",
+         "https://static.tildacdn.one/tild3438-6264-4339-a132-393764666361/GiftsGiftsGifts_AgAD.png",
+         "https://static.tildacdn.one/tild6266-3734-4038-b362-373233626164/GiftsGiftsGifts_AgAD.png", 
+         "https://static.tildacdn.one/tild3962-3236-4131-a639-333932623731/GiftsGiftsGifts_AgAD.png", 
+         "https://static.tildacdn.one/tild3233-6233-4538-a135-393630636338/GiftsGiftsGifts_AgAD.png", 
+         "https://static.tildacdn.one/tild3432-3965-4466-a437-383631396533/GiftsGiftsGifts_AgAD.png"],
 
 
 };
@@ -861,18 +948,26 @@ const SYMBOL_MAP = {
           4:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_069.webp", 
           5:"https://fragment.com/file/gifts/genielamp/thumb.webp", 
           6:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_006.webp"},
-    6 : {1:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_037.webp",
-         2:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_032.webp",
-         3:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_044.webp", 
-         4:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_086.webp", 
-         5:"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_072.webp", 
-         6:"https://fragment.com/file/gifts/durovscap/thumb.webp"},
+    6 : {1:"https://static.tildacdn.one/tild3438-3135-4534-a635-613566653233/GiftsGiftsGifts_AgAE.png",
+         2:"https://static.tildacdn.one/tild3438-6264-4339-a132-393764666361/GiftsGiftsGifts_AgAD.png",
+         3:"https://static.tildacdn.one/tild6266-3734-4038-b362-373233626164/GiftsGiftsGifts_AgAD.png", 
+         4:"https://static.tildacdn.one/tild3962-3236-4131-a639-333932623731/GiftsGiftsGifts_AgAD.png", 
+         5:"https://static.tildacdn.one/tild3233-6233-4538-a135-393630636338/GiftsGiftsGifts_AgAD.png", 
+         6:"https://static.tildacdn.one/tild3432-3965-4466-a437-383631396533/GiftsGiftsGifts_AgAD.png"},
 };
-
 
 const giftNames = {
     "jollychimp": "https://static.tildacdn.one/tild3438-3135-4534-a635-613566653233/GiftsGiftsGifts_AgAE.png",
-    "crystalball":"https://data.chpic.su/stickers/g/GiftStickersByAutoGiftNews/GiftStickersByAutoGiftNews_032.webp",
+    "vintagecigar":"https://static.tildacdn.one/tild6266-3734-4038-b362-373233626164/GiftsGiftsGifts_AgAD.png",
+    "crystalball":"https://static.tildacdn.one/tild3438-6264-4339-a132-393764666361/GiftsGiftsGifts_AgAD.png",
+    "deskcalendar": "https://static.tildacdn.one/tild3831-3539-4962-b439-303863333065/GiftsGiftsGifts_AgAD.png",
+    "candycane": "https://static.tildacdn.one/tild6164-6261-4235-b161-626330343464/GiftsGiftsGifts_AgAD.png",
+    "swagbag": "https://static.tildacdn.one/tild6333-3765-4630-a662-326130393731/unnamed_AgADwYEAAuRh.png",
+    "ionicdryer": "https://static.tildacdn.one/tild3033-6264-4531-a133-393664323063/GiftsGiftsGifts_AgAD.png",
+    "genielamp": "https://static.tildacdn.one/tild3962-6361-4830-b263-633761333332/GiftsGiftsGifts_AgAD.png",
+    "bondedring": "https://static.tildacdn.one/tild3962-3236-4131-a639-333932623731/GiftsGiftsGifts_AgAD.png",
+    "artisanbrick":"https://static.tildacdn.one/tild3233-6233-4538-a135-393630636338/GiftsGiftsGifts_AgAD.png",
+    "preciouspeach":"https://static.tildacdn.one/tild3432-3965-4466-a437-383631396533/GiftsGiftsGifts_AgAD.png"
 }
 
 /**
@@ -901,18 +996,21 @@ function setInitialItems() {
 
     for (let i = 0; i < cols.length; ++i) {
         let col = cols[i];
-        let amountOfItems = baseItemAmount + (i * 3); // Increment the amount for each column
+        let amountOfItems = baseItemAmount + (i * 3);
         let elms = '';
         let firstThreeElms = '';
 
         for (let x = 0; x < amountOfItems; x++) {
             let icon = getRandomIcon();
-            let item = '<div class="icon" data-item="' + icon + '"><img src="' + icon + '"></div>';
+            let item = '<div class="icon" data-item="' + icon + '"><img height="70" width="70" src="' + icon + '"></div>';
             elms += item;
 
-            if (x < 3) firstThreeElms += item; // Backup the first three items because the last three must be the same
+            if (x < 3) firstThreeElms += item;
         }
         col.innerHTML = elms + firstThreeElms;
+        
+        // Устанавливаем начальную позицию
+        col.style.transform = 'translateY(calc(-100% + 226px))';
     }
 }
 
@@ -922,9 +1020,12 @@ function setInitialItems() {
  * @param elem The button itself
  */
 async function spin(elem) {
+    if (elem.getAttribute('disabled') == 'true') return;
+
     winner = 0;
     elem.setAttribute('disabled', true);
-
+    document.getElementById("bblol_spin").classList.add("newspin")
+    elem.classList.add("newspin");
    const response = await fetch('http://localhost:8000/spin', {
             method: 'POST',
             headers: {
@@ -954,11 +1055,13 @@ async function spin(elem) {
     document.getElementById('container').classList.add('spinning');
 
     window.setTimeout(await setResult(data[0], data[1]), BASE_SPINNING_DURATION * 1000 / 2);
-
+    
+  
     window.setTimeout(async function () {
         document.getElementById('container').classList.remove('spinning');
         elem.removeAttribute('disabled');
-    
+        elem.classList.remove("newspin");
+        document.getElementById("bblol_spin").classList.remove("newspin")
         if (data[0][1][0] == data[0][1][1] & data[0][1][1] == data[0][1][2]) {
                 const audio = new Audio('b52403d4e50e503.mp3');
                 audio.play();
@@ -975,10 +1078,7 @@ async function spin(elem) {
 
             }
         }
-
-    
-
-    }.bind(elem), duration * 1000);
+    }.bind(elem), !fast_spin ? duration * 1000 : 700);
 }
 
 async function setResult(dtt, iindex) {
@@ -1001,7 +1101,7 @@ async function setResult(dtt, iindex) {
         }
     }
 }
-const btt = document.getElementById("asda");
+const btt = document.getElementById("refactor_spin");
 btt.addEventListener("click", (e) => {
   spin(btt);
 })
