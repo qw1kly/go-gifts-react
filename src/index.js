@@ -754,7 +754,7 @@ const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/auth', {
 
         let photo_url = msg[0][2];
         let nickname = msg[0][1];
-        let balance = msg[1];
+        let balance = "0.00";
         
         document.getElementById("profilepicture").src = photo_url;
         document.getElementById("nickname").innerText = nickname;
@@ -762,91 +762,10 @@ const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/auth', {
         document.getElementById("bblol").style.width = 65 + 6 * (balance.length - 2) + "px";
         document.getElementById("toncoinsym").style.marginLeft = (Number(document.getElementById("bblol").style.width.slice(0, -2)) - 65) + 41 + "px";
         
-        const all_items = msg[2];
+        const all_items = msg[1];
         giftCounter = all_items.length;
         document.getElementById("emojicount").innerText = "Gifts: " + all_items.length
-        for (let index_s = 0; index_s < all_items.length; index_s++) {
-            let name_of_gift = all_items[index_s][1];
-            let price_of_gift = all_items[index_s][0];
-            let timestamp = all_items[index_s][2];
-            let new_gift_rn = document.createElement("div");
-            let new_gift_img = document.createElement("img");
-            new_gift_img.id = "currentgiftinventory_img";
-            new_gift_rn.className = "megaboxi"
-            new_gift_img.data = name_of_gift+"_"+price_of_gift+"_"+timestamp;
-            new_gift_rn.data = name_of_gift+"_"+price_of_gift+"_"+timestamp+"_"+"$";
-            new_gift_img.width = '85';
-            new_gift_img.height  = '78';
-            new_gift_img.src = giftNames[name_of_gift];
-            
-            new_gift_rn.id = "currentgiftinventory";
-            
-            let wrapper_1 = document.createElement("div");
-            wrapper_1.className="wrapper_gift_pricer";
-            let wrapper_2 = document.createElement("div");
-            wrapper_2.className="liquidGlass-wrapper_gift_pricer button_gift_pricer";
-            let wrapper_3 = document.createElement("div");
-            wrapper_3.className="liquidGlass-effect_gift_pricer";
-            let wrapper_4 = document.createElement("div");
-            wrapper_4.className="liquidGlass-tint_gift_pricer";
-            let wrapper_5 = document.createElement("div");
-            wrapper_5.className="liquidGlass-shine_gift_pricer";
-            let wrapper_6 = document.createElement("img");
-            wrapper_6.id = "toncoinmin";
-            wrapper_6.src = "ton_symbol 1.png";
-            wrapper_2.id = "bblol_gift_pricer";
-            wrapper_3.innerText = Number(price_of_gift);
-            wrapper_2.style.width = 35 + 4 * (price_of_gift.length - 3) + "px";
-            wrapper_6.style.marginLeft = (Number(wrapper_2.style.width.slice(0, -2)) - 35) + 20 + "px";
-            wrapper_2.appendChild(wrapper_6);
-            wrapper_2.appendChild(wrapper_3);
-            wrapper_2.appendChild(wrapper_4);
-            wrapper_2.appendChild(wrapper_5);
-            wrapper_1.appendChild(wrapper_2);
-            new_gift_rn.appendChild(new_gift_img);
-            document.getElementById("allitems").appendChild(new_gift_rn);
-            new_gift_rn.appendChild(wrapper_1)
-
-
-            
-            let new_gift_rn_big = document.createElement("div");
-            let new_gift_img_big = document.createElement("img");
-            new_gift_img_big.id = "currentgiftinventory_img";
-            new_gift_rn_big.className = "megaboxi"
-            new_gift_img_big.data = name_of_gift+"_"+price_of_gift+"_"+timestamp;
-            new_gift_rn_big.data = name_of_gift+"_"+price_of_gift+"_"+timestamp+"_"+"$";
-            new_gift_img_big.width = '85';
-            new_gift_img_big.height  = '78';
-            new_gift_img_big.src = giftNames[name_of_gift];
-            
-            new_gift_rn_big.id = "bigcurrentitem";
-
-            let wrapper_11 = document.createElement("div");
-            wrapper_11.className="wrapper_gift_pricer";
-            let wrapper_22 = document.createElement("div");
-            wrapper_22.className="liquidGlass-wrapper_gift_pricer button_gift_pricer";
-            let wrapper_33 = document.createElement("div");
-            wrapper_33.className="liquidGlass-effect_gift_pricer";
-            let wrapper_44 = document.createElement("div");
-            wrapper_44.className="liquidGlass-tint_gift_pricer";
-            let wrapper_55 = document.createElement("div");
-            wrapper_55.className="liquidGlass-shine_gift_pricer";
-            let wrapper_66 = document.createElement("img");
-            wrapper_66.id = "toncoinmin";
-            wrapper_66.src = "ton_symbol 1.png";
-            wrapper_22.id = "bblol_gift_pricer";
-            wrapper_33.innerText = Number(price_of_gift);
-            wrapper_22.style.width = 35 + 4 * (price_of_gift.length - 3) + "px";
-            wrapper_66.style.marginLeft = (Number(wrapper_22.style.width.slice(0, -2)) - 35) + 20 + "px";
-            wrapper_22.appendChild(wrapper_66);
-            wrapper_22.appendChild(wrapper_33);
-            wrapper_22.appendChild(wrapper_44);
-            wrapper_22.appendChild(wrapper_55);
-            wrapper_11.appendChild(wrapper_22);
-            new_gift_rn_big.appendChild(new_gift_img_big);
-            document.getElementById("allitemsbig").appendChild(new_gift_rn_big);
-            new_gift_rn_big.appendChild(wrapper_11)
-        }
+        
 
     } catch {
         document.getElementById("profilepicture").src = "unknown";
