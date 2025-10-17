@@ -10,7 +10,7 @@ init()
 
 
 
-const socket = new WebSocket("ws://qw1kly-fastapitest-ca38.twc1.net/ws/live-wins");
+const socket = new WebSocket("wss://qw1kly-fastapitest-ca38.twc1.net/ws/live-wins");
 
 
 socket.addEventListener("message", (event) => {
