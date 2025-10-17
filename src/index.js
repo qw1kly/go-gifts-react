@@ -6,11 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {openconnect, get_addr, send_deposit} from './tonmanager';
 import confetti from 'canvas-confetti';
 import {init, openTelegramLink } from '@telegram-apps/sdk';
-//init()
+init()
 
 
 
-const socket = new WebSocket("ws://localhost:8000/ws/live-wins");
+const socket = new WebSocket("ws://qw1kly-fastapitest-ca38.twc1.net/ws/live-wins");
 
 
 socket.addEventListener("message", (event) => {
@@ -736,11 +736,11 @@ document.getElementById("refactor").addEventListener("click", (e)=>{
 })
 
 async function authe() {
-const response = await fetch('http://localhost:8000/auth', {
+const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/auth', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
-        'X-Telegram-Init-Data': "query_id=AAGWAkobAAAAAJYCShvMPzxn&user=%7B%22id%22%3A457835158%2C%22first_name%22%3A%22.%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22fffZzzzap%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FzRrTopbSw7La8Fey17kZI8buAcHEkgBh6Zl4zu5DHRQ.svg%22%7D&auth_date=1757951606&signature=3VVvehY68hHi9Rs2SkKji_OwN1UNjor-qcpZFKJN-9_lyckpkoGUlBHSm2QhydNjDcIShGAZWudn3QtVKDHSBQ&hash=901c6d6d341b37037ffda335c6f4a7e5f95e1f87477409da98428d778aafcee2"
+        'X-Telegram-Init-Data': document.getElementById("tginitdata").innerText
 
         },
     });
@@ -1026,7 +1026,7 @@ async function spin(elem) {
     elem.setAttribute('disabled', true);
     document.getElementById("bblol_spin").classList.add("newspin")
     elem.classList.add("newspin");
-   const response = await fetch('http://localhost:8000/spin', {
+   const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/spin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
