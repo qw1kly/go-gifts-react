@@ -286,7 +286,7 @@ width: 65px;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 88px;
+    margin-top: 24px;
 }
 
 #profilepicture {
@@ -425,7 +425,7 @@ width: 35px;
     width: 328px;
     height: 55px;
     left: calc(50% - 328px/2);
-    top: 320px;
+    top: 260px;
     border-radius: 24px;
 }
 
@@ -3805,7 +3805,7 @@ width: 159px;
   position: relative;
   width: 327px;
   height: 266px;
-  left: calc(50% - 327px / 2 - 3.5px);
+  left: calc(50% - 327px / 2 - 4.5px);
   top: 72px;
   align-items: center;
   justify-content: center;
@@ -4475,12 +4475,12 @@ color: #22F3C9;
 
 
 #refactor_slots{
-    position: relative; /* Меняем на fixed */
+    position: absolute; /* Меняем на fixed */
     width: 101px;
     height: 60px; /* Занимает 70% высоты экрана */
     border-radius: 24px;
-    left: -105px;
-    top: 311px;
+    left: 9px;
+    top: 315px;
     
 }
 
@@ -4677,12 +4677,12 @@ width: 43px;
 
 
 #refactor_spin{
-    position: relative; /* Меняем на fixed */
+    position: absolute; /* Меняем на fixed */
     width: 209px;
     height: 60px; /* Занимает 70% высоты экрана */
     border-radius: 24px;
-    left: 58px;
-    top: 251px;
+    left: 118px;
+    top: 315px;
     
 }
 
