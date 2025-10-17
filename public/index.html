@@ -693,6 +693,7 @@
 <script>
     let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
     document.getElementById("tginitdata").innerText = tg.initData;
+    console.log(document.getElementById("tginitdata").innerText);
     tg.requestFullscreen();
     document.addEventListener("click", (e) => {
         if(event.target.tagName == 'DIV'){
