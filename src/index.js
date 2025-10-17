@@ -38,7 +38,7 @@ document.getElementById("lightfast").addEventListener("click", (event) => {
     if (document.getElementById("lightfast").className.includes("active")) {
         document.getElementById("lightfast").classList.remove("active")
         document.getElementById("lightfast").classList.add("nonactiv")
-        document.getElementById("lightfast").src = "Flash on.png";
+        document.getElementById("lightfast").src = "Flash On.png";
         fast_spin = false;
 
     } else if (!document.getElementById("lightfast").className.includes("active")) {
@@ -64,6 +64,19 @@ deposit.addEventListener("click", (e) => {
         send_deposit(document.getElementById("wallbalik").value)
     }
 })
+
+window.addEventListener("resize", (e) => {
+if (window.innerHeight < 758) {
+        document.getElementById("iconsswitcher").style.position = "absolute";
+         document.getElementById("iconsswitcher").style.removeProperty('bottom');
+         document.getElementById("iconsswitcher").style.top = "629px";
+    } else {
+        document.getElementById("iconsswitcher").style.position = "fixed";
+         document.getElementById("iconsswitcher").style.removeProperty('top');
+         document.getElementById("iconsswitcher").style.bottom = "9px";
+    };
+});
+
 
 async function connectUI() {
     const boolean_value = openconnect();
@@ -117,6 +130,15 @@ document.addEventListener('DOMContentLoaded', function() {
     tint3.classList.add('active');
     shine3.classList.add('active');
 
+        if (window.innerHeight < 758) {
+        document.getElementById("iconsswitcher").style.position = "absolute";
+         document.getElementById("iconsswitcher").style.removeProperty('bottom');
+         document.getElementById("iconsswitcher").style.top = "629px";
+    } else {
+        document.getElementById("iconsswitcher").style.position = "fixed";
+         document.getElementById("iconsswitcher").style.removeProperty('top');
+         document.getElementById("iconsswitcher").style.bottom = "9px";
+    };
 
     // Обработчик для кнопки "Пополнить"
     button3.addEventListener('click', function() {
