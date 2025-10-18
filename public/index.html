@@ -16,7 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-       <div id="maincont">
+<div id="bluringforall" style="display: none;"></div>
+  <div id="maincont">
         <a id="logo">GG</a>
         <div class="wrapper">
        
@@ -40,8 +41,14 @@
     <img id="slotmachine" src="Slot Machine (1).png"/>
     <a id="slotmachinea">Слоты</a>
   </div>
-  <div id="sapericonbar" data-target="svapper_icons"></div>
-  <div id="upgradeiconbar"  data-target="svapper_icons"></div>
+  <div id="sapericonbar" data-target="svapper_icons">
+    <img id="sapermachine" src="Explosive.png"/>
+    <a id="sapermachinea">Сапёр</a>
+  </div>
+  <div id="upgradeiconbar"  data-target="svapper_icons">
+    <img id="upgrademachine" src="Upgrade.png"/>
+    <a id="upgrademachinea">Улучшение</a>
+  </div>
   <div id="profileiconbar" data-target="svapper_icons">
     <img id="profilepic" src="User.png"/>
     <a id="profilea">Профиль</a>
@@ -52,6 +59,101 @@
   
   
   
+
+
+
+
+    <div id="upgradeicon" class="upgradeiconn" style="display: none;">
+            <div id="refactor_rules_2" style="display: block;">
+                
+                <div class="liquidGlass-wrapper_rules_2 button_rules_2" id="bblol_rules_2">
+                <div class="liquidGlass-effect_rules_2"></div>
+                <div class="liquidGlass-tint_rules_2"></div>
+                <div class="liquidGlass-shine_rules_2">Правила</div>
+                   
+              </div>
+              </div> 
+
+
+            <div id="refactor_upgrade" style="display: block;">
+                
+                <div class="liquidGlass-wrapper_upgrade button_upgrade" id="bblol_upgrade">
+                <div class="liquidGlass-effect_upgrade"></div>
+                <div class="liquidGlass-tint_upgrade"></div>
+                <div class="liquidGlass-shine_upgrade" id="precentage"></div>
+                   
+              </div>
+              <div class="spinner-container">
+                <div class="spinner" id="wheelSpinner"></div>
+                <div class="spinner-center"></div>
+            </div>
+              <a id="gglogo">GG</a>
+            </div> 
+          <div id="selectorr">
+
+               <div id="refactor_your_item" style="display: block;">
+                
+                <div class="liquidGlass-wrapper_your_item button_your_item" id="bblol_your_item">
+                <div class="liquidGlass-effect_your_item"></div>
+                <div class="liquidGlass-tint_your_item"></div>
+                <div class="liquidGlass-shine_your_item"></div>
+                  <img src="Plus Math (1).png" id="plusitem"/> 
+                  <div id="selyouritem">Выберите ваш предмет</div>
+                  <div id="corsera" style="display: none;">
+                    <a id="giftprice"></a>
+                    <img src="ton_symbol 1.png" id="minupgr"/>
+                    <div id="giftname"></div>
+                  </div>
+              </div>
+              </div> 
+
+               <div id="refactor_our" style="display: block;">
+                
+                <div class="liquidGlass-wrapper_our button_our" id="bblol_our">
+                <div class="liquidGlass-effect_our"></div>
+                <div class="liquidGlass-tint_our"></div>
+                <div class="liquidGlass-shine_our"></div>
+                    <img src="Plus Math (1).png" id="plusitem_2"/> 
+                    <a id="selyouritem_2">Выберите желаемый предмет</a>
+                     <div id="corsera_2" style="display: none;">
+                    <a id="giftprice_2"></a>
+                    <img src="ton_symbol 1.png" id="minupgr"/>
+                    <div id="giftname_2"></div>
+                  </div>
+
+                  </div>
+              </div> 
+          </div>
+
+
+
+
+
+        <div id="refactor_modal_gift_select" style="display: none;">
+        
+          <div class="liquidGlass-wrapper_modal_gift_select button_modal_gift_select" id="bblol_modal_gift_select">
+          <div class="liquidGlass-effect_modal_gift_select"></div>
+          <div class="liquidGlass-tint_modal_gift_select"></div>
+          <div class="liquidGlass-shine_modal_gift_select"></div>
+          <div id="svapper_1_select"></div>
+          <div id="allitemsbig_select"></div>
+          </div>
+        </div>
+
+        <div id="refactor_modal_gift_select_w" style="display: none;">
+        
+          <div class="liquidGlass-wrapper_modal_gift_select_w button_modal_gift_select_w" id="bblol_modal_gift_select_w">
+          <div class="liquidGlass-effect_modal_gift_select_w"></div>
+          <div class="liquidGlass-tint_modal_gift_select_w"></div>
+          <div class="liquidGlass-shine_modal_gift_select_w"></div>
+          <div id="svapper_1_select_w"></div>
+          <div id="allitemsbig_select_w">
+              
+                
+          </div>
+          </div>
+        </div>
+    </div>
     <div id="roulleteicon" class="roulleteiconn">
         <div id="liveroullete">
         
@@ -225,6 +327,16 @@
 
 
   <div id="profileicon" class="profileiconn" style="display: none;">
+    <div id="refactor_settings_modal" style="display: none;">
+        
+        <div class="liquidGlass-wrapper_settings_modal button_settings_modal" id="bblol_settings_modal">
+        <div class="liquidGlass-effect_settings_modal"></div>
+        <div class="liquidGlass-tint_settings_modal"></div>
+        <div class="liquidGlass-shine_settings_modal"></div>
+        <div id="slidersettings"></div>
+      </div>
+    </div>
+    
     <div id="refactor_modal" style="display: none;">
         
         <div class="liquidGlass-wrapper_modal button_modal" id="bblol_modal">
@@ -662,32 +774,7 @@
   </div>
   
 </div>
-
-<div class="c100 p34 center" style="top: 400px; display: none;">
-    <span>34%</span>
-    <div class="slice">
-        <div class="bar"></div>
-        <div class="fill"></div>
-    </div>
-    <div class="arrow-container">
-            <div class="arrow" id="arrow"></div>
-        </div>
-</div>
-
-
-
-
-
-
-
-      <div class="controls" style="display: none;">
-        <label for="degrees">Градусы:</label>
-        <input type="number" id="degrees" value="720" min="0" max="1080">
-        <button id="bibo">Вращать стрелку</button>
-    </div>
-<a id="tginitdata" style="display:none;"></a>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
 
 
 <script>
