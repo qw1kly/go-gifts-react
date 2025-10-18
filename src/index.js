@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {openconnect, get_addr, send_deposit} from './tonmanager';
 import confetti from 'canvas-confetti';
 import {init, openTelegramLink } from '@telegram-apps/sdk';
-//init()
+init()
 
 const eventSource = new EventSource('https://qw1kly-fastapitest-ca38.twc1.net/api/prices-stream');
 
@@ -479,7 +479,7 @@ document.getElementById("wrapper_sellall_now").addEventListener("click", async f
 
         },
         body: JSON.stringify({
-            id: "457835158",
+            id: document.getElementById("userid").innerText,
             balance: "0.00",
         })
     });
@@ -545,7 +545,7 @@ document.getElementById("wrapper_with").addEventListener("click", async function
 
         },
         body: JSON.stringify({
-            owner_id: "457835158",
+            owner_id: "document.getElementById("userid").innerText,
             gift_name: document.getElementById("currentgiftimg").data[0],
             gift_price: document.getElementById("currentgiftimg").data[1],
             timestamp: document.getElementById("currentgiftimg").data[2]
@@ -785,7 +785,7 @@ document.getElementById("refactor_upgrade").addEventListener('click', async func
                     },
                     body: JSON.stringify({
             gift: {
-                owner_id: "457835158",
+                owner_id: document.getElementById("userid").innerText,
                 gift_name: current_gift,
                 gift_price: gift_price_,
                 timestamp: times,
@@ -1135,7 +1135,7 @@ document.getElementById("wrapper_sellgift").addEventListener("click", async func
 
         },
         body: JSON.stringify({
-            owner_id: "457835158",
+            owner_id: document.getElementById("userid").innerText,
             gift_name: document.getElementById("currentgiftimg").data[0],
             gift_price: document.getElementById("currentgiftimg").data[1],
             timestamp: document.getElementById("currentgiftimg").data[2]
