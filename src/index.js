@@ -8,7 +8,7 @@ import confetti from 'canvas-confetti';
 import {init, openTelegramLink } from '@telegram-apps/sdk';
 //init()
 
-const eventSource = new EventSource('http://localhost:8000/api/prices-stream');
+const eventSource = new EventSource('https://qw1kly-fastapitest-ca38.twc1.net/api/prices-stream');
 
 eventSource.onmessage = (event) => {
     const dataa_a = JSON.parse(event.data)['prices'];
@@ -32,7 +32,7 @@ eventSource.onmessage = (event) => {
 
 };
 
-const socket = new WebSocket("ws://localhost:8000/ws/live-wins");
+const socket = new WebSocket("wss://qw1kly-fastapitest-ca38.twc1.net/ws/live-wins");
 
 
 socket.addEventListener("message", (event) => {
@@ -471,7 +471,7 @@ let roullete_id = 1;
 
 
 document.getElementById("wrapper_sellall_now").addEventListener("click", async function meme(e)  {
-     const response = await fetch('http://localhost:8000/sellall', {
+     const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/sellall', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -537,7 +537,7 @@ document.getElementById("slider2_").addEventListener("click", (e) => {
 
 
 document.getElementById("wrapper_with").addEventListener("click", async function withid (e) {
-    const response = await fetch('http://localhost:8000/withdraw-gift', {
+    const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/withdraw-gift', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -777,7 +777,7 @@ document.getElementById("refactor_upgrade").addEventListener('click', async func
         }
         ccsz+=1;
     }
-        const response = await fetch('http://localhost:8000/upgrade-gift', {
+        const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/upgrade-gift', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1127,7 +1127,7 @@ document.getElementById("wrapper_sellall").addEventListener("click", async funct
 
 
 document.getElementById("wrapper_sellgift").addEventListener("click", async function sellGift(e) {
-    const response = await fetch('http://localhost:8000/sellgift', {
+    const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/sellgift', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -1353,7 +1353,7 @@ document.getElementById("slidersettings").addEventListener("click", (e)=>{
 
 })
 async function authe() {
-const response = await fetch('http://localhost:8000/auth', {
+const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/auth', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -1685,7 +1685,7 @@ async function spin(elem) {
     elem.setAttribute('disabled', true);
     document.getElementById("bblol_spin").classList.add("newspin")
     elem.classList.add("newspin");
-   const response = await fetch('http://localhost:8000/spin', {
+   const response = await fetch('https://qw1kly-fastapitest-ca38.twc1.net/spin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
