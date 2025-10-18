@@ -545,7 +545,7 @@ document.getElementById("wrapper_with").addEventListener("click", async function
 
         },
         body: JSON.stringify({
-            owner_id: "document.getElementById("userid").innerText,
+            owner_id: document.getElementById("userid").innerText,
             gift_name: document.getElementById("currentgiftimg").data[0],
             gift_price: document.getElementById("currentgiftimg").data[1],
             timestamp: document.getElementById("currentgiftimg").data[2]
