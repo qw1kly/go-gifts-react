@@ -58,6 +58,7 @@ body {
 }
 #maincont{
     height: 0px;
+    margin-top: 50px;
 }
 #logo{
     /* GG */
@@ -1553,7 +1554,8 @@ align-content: center;
 
 
 #svapper{
-  z-index: 101;
+  pointer-events: all;
+  z-index: 1010;
 position: absolute;
 top: 11px;
 left: calc(50% - 155px/2);
@@ -2760,7 +2762,6 @@ align-content: center;
   cursor: pointer;
   backdrop-filter: blur(1px);
 
-  box-shadow: 2 0px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
 
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
 }
@@ -2770,7 +2771,6 @@ align-content: center;
   z-index: 2;
   inset: 0;
   margin-left: 2px;
-  backdrop-filter: blur(1px);
   overflow: hidden;
   isolation: isolate;
 
@@ -2790,10 +2790,9 @@ color: #FFFFFF;
   z-index: 1;
   position: absolute;
   inset: 0;
-  filter: blur(2px);
 
   background: #000000;
-  opacity: 0.08;
+  opacity: 0.05;
 }
 
 .liquidGlass-shine_gift_pricer {
@@ -3392,6 +3391,30 @@ margin-left: calc(50% - 155px/2);
   height: 0;
 }
 
+#allitemsbig_select{
+  display:flex;
+  z-index: 100;
+  pointer-events: all;
+  position: absolute;
+    align-content: flex-start;
+
+  width: 334px;
+  max-width: 334px;
+
+  height: 90%;
+  margin-left: calc(50% - 334px/2);
+  margin-top: 41px;
+  background: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex-wrap:wrap;
+}
+#allitemsbig_select::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 #bigcurrentitem{
   position: relative;
   width: 86px;
@@ -3400,7 +3423,13 @@ margin-left: calc(50% - 155px/2);
   margin-top: 10px;
 }
 
-
+#bigcurrentitem_2{
+  position: relative;
+  width: 86px;
+  height: 79px;
+  margin-left: 19px;
+  margin-top: 10px;
+}
 
 
 
@@ -4501,8 +4530,8 @@ color: #22F3C9;
   cursor: pointer;
   
     box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.08),
-    0 4px 20px rgba(0, 0, 0, 0.08);
+    0 2px 8px rgba(0, 0, 0, 0.03),
+    0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .liquidGlass-effect_slots {
@@ -4702,8 +4731,8 @@ width: 43px;
   cursor: pointer;
   
     box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.08),
-    0 4px 20px rgba(0, 0, 0, 0.08);
+    0 2px 8px rgba(0, 0, 0, 0.03),
+    0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .liquidGlass-effect_spin {
@@ -5153,6 +5182,71 @@ text-align: center;
 color: #ffffff;
 }
 
+#sapericonbar{
+  
+  position: relative;
+  width: 50px;
+  height: 62px;
+  margin-left: 101px;
+  margin-top: -62px;
+
+}
+
+#sapermachine{
+position: relative;
+  z-index: 30;
+  width: 36px;
+  height: 36px;
+  margin-left: 6px;
+  margin-top: 7px;
+    transition: all 0.7s ease;
+
+}
+#sapermachinea{
+   position: absolute;
+  margin-top: 43px;
+  margin-left: -36px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 11px;
+line-height: 13px;
+text-align: center;
+color: #ffffff;
+}
+
+#upgradeiconbar{
+  
+  position: relative;
+  width: 50px;
+  height: 62px;
+  margin-left: 188px;
+  margin-top: -62px;
+
+}
+
+#upgrademachine{
+position: relative;
+  z-index: 30;
+  width: 36px;
+  height: 36px;
+  margin-left: 6px;
+  margin-top: 7px;
+    transition: all 0.7s ease;
+
+}
+#upgrademachinea{
+   position: absolute;
+  margin-top: 43px;
+  margin-left: -48px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 11px;
+line-height: 13px;
+text-align: center;
+color: #ffffff;
+}
 
 
 
@@ -5179,3 +5273,1341 @@ color: #ffffff;
   animation: checkingnow 0.5s ease-out;
 }
 
+
+.upgradeiconn.active{
+  animation: checkingnow 0.5s ease-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#refactor_settings_modal{
+    position: fixed; /* Меняем на fixed */
+    width: 100%;
+    height: 25vh; /* Занимает 70% высоты экрана */
+    border-radius: 34px 34px 0px 0px;
+    bottom: -25vh; /* Начальное положение - скрыто внизу */
+    left: 0;
+    z-index: 1000;
+}
+
+.liquidGlass-wrapper_settings_modal {
+  position: relative;
+  display: flex;
+    border-radius: 34px 34px 0px 0px;
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 0px rgba(0, 0, 0, 0.1);
+}
+
+.liquidGlass-effect_settings_modal {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+    border-radius: 34px 34px 0px 0px;
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_settings_modal{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 40%;
+  background-blend-mode: hard-light;
+  filter: blur(0px);
+  backdrop-filter: blur(0px);
+    border-radius: 34px 34px 0px 0px;
+}
+
+.liquidGlass-shine_settings_modal {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  box-shadow: inset 0.9px .9px 0.9px -0.6px rgb(174, 240, 248),
+              inset -0.9px -0.9px 0.9px -0.6px rgb(174, 240, 248);
+}
+
+.button_settings_modal {
+    width: 100%;
+    height: 100%; /* Занимает всю высоту модалки */
+    border-radius: 34px 34px 0px 0px;
+}
+
+.button_settings_modal,
+.button_settings_modal > div {
+    border-radius: 34px 34px 0px 0px;
+}
+#bblol_settings_modal{
+    border-radius: 34px 34px 0px 0px;
+}
+
+.settings_modal-show {
+    animation: upToDownUp 0.5s ease-in-out forwards;
+}
+
+.settings_modal-hide {
+    animation: downToUpDown 0.5s ease-out forwards;
+}
+
+@keyframes upToDownUp {
+    from {
+        bottom: -25vh; /* Начальное положение */
+    }
+    to {
+        bottom: 0; /* Прижимаем к низу экрана */
+    }
+}
+
+@keyframes downToUpDown {
+    from {
+        bottom: 0; /* Начальное положение */
+    }
+    to {
+        bottom: -25vh; /* Прижимаем к низу экрана */
+    }
+}
+
+
+#bluringforall{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+#slidersettings{
+  pointer-events: all;
+  z-index: 1000;
+  margin-top: 17px;
+  margin-left: calc(50% - 155px / 2);
+position: relative;
+width: 155px;
+height: 8px;
+background: #EFEFEF;
+border-radius: 6.5px;
+}
+
+
+
+
+
+
+
+
+
+#refactor_rules_2{
+    position: relative; /* Меняем на fixed */
+    width: 102px;
+    height: 32px; /* Занимает 70% высоты экрана */
+    border-radius: 24px;
+    margin-left: 26px;
+    margin-top: 89px;
+    
+}
+
+.liquidGlass-wrapper_rules_2 {
+  position: relative;
+  display: flex;
+  width: 102px;
+    height: 32px;
+    border-radius: 24px;
+    overflow: hidden;
+  color: black;
+  cursor: pointer;
+  
+    box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.liquidGlass-effect_rules_2 {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  width: 102px;
+    height: 32px;
+    border-radius: 24px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_rules_2{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg,rgba(245, 245, 245, 0.3));
+  background-blend-mode: hard-light;
+  filter: blur(2px);
+  backdrop-filter: blur(0px);
+  width: 102px;
+    height: 32px;
+    border-radius: 24px;
+    
+}
+
+.liquidGlass-shine_rules_2 {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  width: 102px;
+    height: 32px; /* Занимает 70% высоты экрана */
+    border-radius: 24px;
+    box-shadow: inset 1.3px 0.8px 0.6px -0.6px rgb(174, 240, 248),
+              inset -1.3px -0.8px 0.6px -0.6px rgb(174, 240, 248);
+
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+align-content: center;
+color: #FFFFFF;
+
+
+            }
+
+.button_rules_2 {width: 102px;
+    height: 32px; /* Занимает 70% высоты экрана */
+    border-radius: 24px;
+    
+}
+
+.button_rules_2,
+.button_rules_2 > div {width: 102px;
+    height: 32px; /* Занимает 70% высоты экрана */
+    border-radius: 24px;
+    
+}
+#bblol_rules_2{width: 102px;
+    height: 32px; /* Занимает 70% высоты экрана */
+    border-radius: 24px;
+    
+}
+
+
+
+#refactor_upgrade{
+    position: relative; /* Меняем на fixed */
+    width: 288px;
+    height: 288px; /* Занимает 70% высоты экрана */
+    border-radius: 296px;
+    margin-left: calc(50% - 288px / 2);
+    margin-top: 7px;
+    
+}
+
+.liquidGlass-wrapper_upgrade {
+  position: relative;
+  display: flex;
+  width: 288px;
+    height: 288px;
+    border-radius: 296px;
+    overflow: hidden;
+  color: black;
+  cursor: pointer;
+  
+    box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.00),
+    0 4px 20px rgba(0, 0, 0, 0.00);
+    
+}
+
+.liquidGlass-effect_upgrade {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  width: 288px;
+    height: 288px;
+    border-radius: 296px;
+  overflow: hidden;
+  isolation: isolate;
+  
+  background: #50ebf9;
+  opacity: 0.09;
+}
+
+.liquidGlass-tint_upgrade{
+  
+  background: #FFFFFF;
+  opacity: 0.01;
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background-blend-mode: hard-light;
+  filter: blur(20px);
+  backdrop-filter: blur(100px);
+  width: 288px;
+    height: 288px;
+    border-radius: 296px;
+    
+}
+
+.liquidGlass-shine_upgrade {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  width: 288px;
+    height: 288px; /* Занимает 70% высоты экрана */
+    border-radius: 296px;
+    box-shadow: inset 0.9px 1.0px 0.6px -0.6px rgb(174, 240, 248),
+              inset -0.9px -1.0px 0.6px -0.6px rgb(174, 240, 248);
+}
+
+
+.husesos{
+  animation: kicki 1s ease-in;
+    --target-percentage: 0%; /* Будет устанавливаться через JS */
+
+}
+
+
+@keyframes kicki {
+  0% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.00), rgba(0,0,0,0) 0% 1%); }
+  1.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.02), rgba(0,0,0,0) 0% 1%); }
+  3.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.04), rgba(0,0,0,0) 0% 1%); }
+  5% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.07), rgba(0,0,0,0) 0% 1%); }
+  6.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.10), rgba(0,0,0,0) 0% 1%); }
+  8.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.14), rgba(0,0,0,0) 0% 1%); }
+  10% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.18), rgba(0,0,0,0) 0% 1%); }
+  11.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.22), rgba(0,0,0,0) 0% 1%); }
+  13.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.26), rgba(0,0,0,0) 0% 1%); }
+  15% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.30), rgba(0,0,0,0) 0% 1%); }
+  16.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.34), rgba(0,0,0,0) 0% 1%); }
+  18.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.38), rgba(0,0,0,0) 0% 1%); }
+  20% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.42), rgba(0,0,0,0) 0% 1%); }
+  21.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.45), rgba(0,0,0,0) 0% 1%); }
+  23.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.48), rgba(0,0,0,0) 0% 1%); }
+  25% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.51), rgba(0,0,0,0) 0% 1%); }
+  26.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.54), rgba(0,0,0,0) 0% 1%); }
+  28.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.57), rgba(0,0,0,0) 0% 1%); }
+  30% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.60), rgba(0,0,0,0) 0% 1%); }
+  31.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.63), rgba(0,0,0,0) 0% 1%); }
+  33.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.65), rgba(0,0,0,0) 0% 1%); }
+  35% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.67), rgba(0,0,0,0) 0% 1%); }
+  36.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.69), rgba(0,0,0,0) 0% 1%); }
+  38.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.71), rgba(0,0,0,0) 0% 1%); }
+  40% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.73), rgba(0,0,0,0) 0% 1%); }
+  41.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.75), rgba(0,0,0,0) 0% 1%); }
+  43.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.77), rgba(0,0,0,0) 0% 1%); }
+  45% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.79), rgba(0,0,0,0) 0% 1%); }
+  46.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.81), rgba(0,0,0,0) 0% 1%); }
+  48.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.83), rgba(0,0,0,0) 0% 1%); }
+  50% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.85), rgba(0,0,0,0) 0% 1%); }
+  51.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.86), rgba(0,0,0,0) 0% 1%); }
+  53.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.87), rgba(0,0,0,0) 0% 1%); }
+  55% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.88), rgba(0,0,0,0) 0% 1%); }
+  56.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.89), rgba(0,0,0,0) 0% 1%); }
+  58.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.90), rgba(0,0,0,0) 0% 1%); }
+  60% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.91), rgba(0,0,0,0) 0% 1%); }
+  61.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.92), rgba(0,0,0,0) 0% 1%); }
+  63.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.93), rgba(0,0,0,0) 0% 1%); }
+  65% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.94), rgba(0,0,0,0) 0% 1%); }
+  66.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.95), rgba(0,0,0,0) 0% 1%); }
+  68.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.955), rgba(0,0,0,0) 0% 1%); }
+  70% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.96), rgba(0,0,0,0) 0% 1%); }
+  71.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.965), rgba(0,0,0,0) 0% 1%); }
+  73.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.97), rgba(0,0,0,0) 0% 1%); }
+  75% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.975), rgba(0,0,0,0) 0% 1%); }
+  76.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.98), rgba(0,0,0,0) 0% 1%); }
+  78.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.982), rgba(0,0,0,0) 0% 1%); }
+  80% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.984), rgba(0,0,0,0) 0% 1%); }
+  81.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.986), rgba(0,0,0,0) 0% 1%); }
+  83.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.988), rgba(0,0,0,0) 0% 1%); }
+  85% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.99), rgba(0,0,0,0) 0% 1%); }
+  86.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.992), rgba(0,0,0,0) 0% 1%); }
+  88.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.994), rgba(0,0,0,0) 0% 1%); }
+  90% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.996), rgba(0,0,0,0) 0% 1%); }
+  91.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.997), rgba(0,0,0,0) 0% 1%); }
+  93.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.998), rgba(0,0,0,0) 0% 1%); }
+  95% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.999), rgba(0,0,0,0) 0% 1%); }
+  96.67% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.9995), rgba(0,0,0,0) 0% 1%); }
+  98.33% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% calc(var(--target-percentage) * 0.9998), rgba(0,0,0,0) 0% 1%); }
+  100% { background: conic-gradient(rgba(37, 208, 184, 0.71) 0.0% var(--target-percentage), rgba(0,0,0,0) 0% 1%); }
+}
+
+.button_upgrade {width: 288px;
+    height: 288px; /* Занимает 70% высоты экрана */
+    border-radius: 296px;
+    
+}
+
+.button_upgrade,
+.button_upgrade > div {width: 288px;
+    height: 288px; /* Занимает 70% высоты экрана */
+    border-radius: 296px;
+    
+}
+#bblol_upgrade{width: 288px;
+    height: 288px; /* Занимает 70% высоты экрана */
+    border-radius: 296px;
+    
+}
+
+#gglogo{
+  z-index: 100;
+position: absolute;
+top: 47px;
+left: 50px;
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 128px;
+line-height: 192px;
+/* identical to box height */
+text-align: center;
+letter-spacing: -0.08em;
+color: #FFFFFF;
+align-content: center;
+}
+
+
+#selectorr {
+  position: relative;
+   width: 318px;
+   height: 155px;
+   left: calc(50% - 318px / 2);
+   margin-top: 29px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#refactor_your_item{
+    position: relative; /* Меняем на fixed */
+    pointer-events: all;
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+    
+}
+
+.liquidGlass-wrapper_your_item {
+  position: relative;
+  display: flex;
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+    overflow: hidden;
+  color: black;
+  cursor: pointer;
+  
+    box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.liquidGlass-effect_your_item {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_your_item{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg,rgba(245, 245, 245, 0.3));
+  background-blend-mode: hard-light;
+  filter: blur(2px);
+  backdrop-filter: blur(0px);
+  width: 102px;
+    height: 32px;
+
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+        
+}
+
+.liquidGlass-shine_your_item {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+
+    box-shadow: inset 1.3px 1.3px 1.6px -0.6px rgb(174, 240, 248),
+              inset -1.3px -1.3px 1.6px -0.6px rgb(174, 240, 248);
+
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+align-content: center;
+color: #FFFFFF;
+
+
+            }
+
+.button_your_item {
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+    
+}
+
+.button_your_item,
+.button_your_item > div {
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+}
+#bblol_your_item{
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+}
+
+
+
+
+#refactor_our{
+    position: relative; /* Меняем на fixed */
+    
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    margin-left: 162px;
+    margin-top: -155px;
+    
+}
+
+.liquidGlass-wrapper_our {
+  position: relative;
+  display: flex;
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+    overflow: hidden;
+  color: black;
+  cursor: pointer;
+  
+    box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.liquidGlass-effect_our {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_our{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg,rgba(245, 245, 245, 0.3));
+  background-blend-mode: hard-light;
+  filter: blur(2px);
+  backdrop-filter: blur(0px);
+  width: 102px;
+    height: 32px;
+
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+        
+}
+
+.liquidGlass-shine_our {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+    box-shadow: inset 1.3px 1.3px 1.6px -0.6px rgb(174, 240, 248),
+              inset -1.3px -1.3px 1.6px -0.6px rgb(174, 240, 248);
+
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+align-content: center;
+color: #FFFFFF;
+
+
+            }
+
+.button_our {
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+    
+}
+
+.button_our,
+.button_our > div {
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+}
+#bblol_our{
+  width: 155px;
+    height: 155px; 
+    border-radius: 21px;
+    
+}
+
+
+
+
+
+
+
+
+
+#refactor_modal_gift_select{
+    position: fixed; /* Меняем на fixed */
+    width: 100%;
+    height: 75vh; /* Занимает 70% высоты экрана */
+    border-radius: 16px 16px 0 0;
+    bottom: -75vh; /* Начальное положение - скрыто внизу */
+    left: 0;
+    z-index: 1000;
+}
+
+.liquidGlass-wrapper_modal_gift_select {
+    pointer-events: none;
+
+  position: relative;
+  display: flex;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 0px rgba(0, 0, 0, 0.1);
+}
+
+.liquidGlass-effect_modal_gift_select {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_modal_gift_select{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 30%;
+  background-blend-mode: hard-light;
+  filter: blur(0px);
+  backdrop-filter: blur(0px);
+  border-radius: 16px 16px 0 0;
+}
+
+.liquidGlass-shine_modal_gift_select {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  box-shadow: inset 1.9px 1.3px 1.9px -0.6px rgb(174, 240, 248),
+              inset -1.9px -1.3px 0.9px -0.6px rgb(174, 240, 248);
+}
+
+.button_modal_gift_select {
+    width: 100%;
+    height: 100%; /* Занимает всю высоту модалки */
+    border-radius: 16px 16px 0 0;
+}
+
+.button_modal_gift_select,
+.button_modal_gift_select > div {
+    border-radius: 16px 16px 0 0;
+}
+#bblol_modal_gift_select{
+    border-radius: 34px 34px 0px 0px;
+}
+
+.modal-showgift_select {
+    animation: upToDown_inv 0.5s ease-in-out forwards;
+}
+
+.modal-hidegift_select {
+    animation: downToUp_inv 0.5s ease-out forwards;
+}
+
+@keyframes upToDown_inv {
+    from {
+        bottom: -75vh; /* Начальное положение */
+    }
+    to {
+        bottom: 0; /* Прижимаем к низу экрана */
+    }
+}
+
+@keyframes downToUp_inv {
+    from {
+        bottom: 0; /* Начальное положение */
+    }
+    to {
+        bottom: -75vh; /* Прижимаем к низу экрана */
+    }
+}
+#svapper_1_select{
+pointer-events: all;
+position: relative;
+width: 155px;
+height: 8px;
+z-index: 300;
+background: #EFEFEF;
+border-radius: 6.5px;
+margin-top: 16px;
+margin-left: calc(50% - 155px/2);
+}
+
+
+
+#plusitem{
+  position: relative;
+  z-index: 100;
+  width: 59px;
+  height: 59px;
+  margin-top: 24px;
+  margin-left: 48px;
+}
+#plusitem_2{
+  position: relative;
+  z-index: 100;
+  width: 59px;
+  height: 59px;
+  margin-top: 24px;
+  margin-left: 48px;
+}
+#selyouritem{
+  position: relative;
+  z-index: 100;
+width: 116px;
+height: 42px;
+margin-top: 99px;
+margin-left: -88px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+
+color: #D9D9D9;
+
+}
+
+#minupgr{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  margin-left: 3px;
+}
+#corsera{
+  z-index: 100;
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin-top: 110px;
+  margin-left: -75px;
+}
+#giftprice{
+    position: relative;
+
+width: 14px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+justify-content: center;
+align-content: center;
+align-items: center;
+justify-items: center;
+color: #FFFFFF;
+}
+
+#giftname{
+position: relative;
+width: 155px;
+height: 21px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+color: #FFFFFF;
+margin-left: calc(50% - 155px / 2 - 2.5px);
+}
+
+
+
+
+
+
+
+#refactor_modal_gift_select_w{
+    position: fixed; /* Меняем на fixed */
+    width: 100%;
+    height: 75vh; /* Занимает 70% высоты экрана */
+    border-radius: 16px 16px 0 0;
+    bottom: -75vh; /* Начальное положение - скрыто внизу */
+    left: 0;
+    z-index: 1000;
+}
+
+.liquidGlass-wrapper_modal_gift_select_w {
+    pointer-events: none;
+
+  position: relative;
+  display: flex;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 0px rgba(0, 0, 0, 0.1);
+}
+
+.liquidGlass-effect_modal_gift_select_w {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_modal_gift_select_w{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: #F5F5F5;
+  opacity: 30%;
+  background-blend-mode: hard-light;
+  filter: blur(0px);
+  backdrop-filter: blur(0px);
+  border-radius: 16px 16px 0 0;
+}
+
+.liquidGlass-shine_modal_gift_select_w {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  box-shadow: inset 1.9px 1.3px 1.9px -0.6px rgb(174, 240, 248),
+              inset -1.9px -1.3px 0.9px -0.6px rgb(174, 240, 248);
+}
+
+.button_modal_gift_select_w {
+    width: 100%;
+    height: 100%; /* Занимает всю высоту модалки */
+    border-radius: 16px 16px 0 0;
+}
+
+.button_modal_gift_select_w,
+.button_modal_gift_select_w > div {
+    border-radius: 16px 16px 0 0;
+}
+#bblol_modal_gift_select_w{
+    border-radius: 34px 34px 0px 0px;
+}
+
+.modal-showgift_select_w {
+    animation: upToDown_inv 0.5s ease-in-out forwards;
+}
+
+.modal-hidegift_select_w {
+    animation: downToUp_inv 0.5s ease-out forwards;
+}
+
+@keyframes upToDown_inv {
+    from {
+        bottom: -75vh; /* Начальное положение */
+    }
+    to {
+        bottom: 0; /* Прижимаем к низу экрана */
+    }
+}
+
+@keyframes downToUp_inv {
+    from {
+        bottom: 0; /* Начальное положение */
+    }
+    to {
+        bottom: -75vh; /* Прижимаем к низу экрана */
+    }
+}
+#svapper_1_select_w{
+pointer-events: all;
+position: relative;
+width: 155px;
+height: 8px;
+z-index: 300;
+background: #EFEFEF;
+border-radius: 6.5px;
+margin-top: 16px;
+margin-left: calc(50% - 155px/2);
+}
+
+
+.shakenotselected{
+      animation: shake 0.5s ease-in-out;
+      background: rgba(255, 0, 0, 0.373);
+  }
+
+  /* Анимация тряски */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+
+#allitemsbig_select_w{
+  display:flex;
+  z-index: 100;
+  pointer-events: all;
+  position: absolute;
+    align-content: flex-start;
+
+  width: 334px;
+  max-width: 334px;
+
+  height: 90%;
+  margin-left: calc(50% - 334px/2);
+  margin-top: 41px;
+  background: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex-wrap:wrap;
+}
+#allitemsbig_select_w::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+
+
+
+
+
+
+
+
+#refactor_jos{
+    position: relative; /* Меняем на fixed */
+    pointer-events: all;
+  width: 86px;
+    height: 79px; 
+    border-radius: 13px;
+    margin-left: 19px;
+    margin-top: 10px;
+    
+}
+
+.liquidGlass-wrapper_jos {
+  position: relative;
+  display: flex;
+  width: 86px;
+    height: 79px; 
+    border-radius: 13px;
+    
+    overflow: hidden;
+  color: black;
+  cursor: pointer;
+  
+    box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.liquidGlass-effect_jos {
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  width: 86px;
+    height: 79px; 
+    border-radius: 13px;
+    
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint_jos{
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg,rgba(245, 245, 245, 0.3));
+  background-blend-mode: hard-light;
+  filter: blur(2px);
+  backdrop-filter: blur(0px);
+  width: 86px;
+    height: 79px; 
+    border-radius: 13px;
+        
+}
+
+.liquidGlass-shine_jos {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  width: 86px;
+    height: 79px; 
+    border-radius: 13px;
+    
+
+    box-shadow: inset 1.3px 1.3px 1.6px -0.6px rgb(174, 240, 248),
+              inset -1.3px -1.3px 1.6px -0.6px rgb(174, 240, 248);
+
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+align-content: center;
+color: #FFFFFF;
+
+
+            }
+
+.button_jos{
+  width: 86px;
+    height: 79px; 
+    border-radius: 13px;
+    
+}
+
+.button_jos,
+.button_jos > div {
+  width: 86px;
+    height: 79px; 
+    border-radius: 13px;
+    
+}
+#bblol_jos{
+  width: 86px;
+    height: 79px; 
+    border-radius: 13px;
+    
+}
+
+
+
+.something-went-wrong {
+       animation: shake 0.5s ease-in-out;
+      background: rgba(255, 0, 0, 0.373);
+  }
+
+  /* Анимация тряски */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+
+
+#innermessage{
+  width: 62px;
+  height: 62px;
+  z-index: 100;
+  margin-top: 8px;
+  margin-left: 11px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#selyouritem_2{
+  position: relative;
+  z-index: 100;
+width: 116px;
+height: 42px;
+margin-top: 99px;
+margin-left: -88px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+
+color: #D9D9D9;
+
+}
+
+#corsera_2{
+  z-index: 100;
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin-top: 110px;
+  margin-left: -75px;
+}
+#giftprice_2{
+    position: relative;
+
+width: 14px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+justify-content: center;
+align-content: center;
+align-items: center;
+justify-items: center;
+color: #FFFFFF;
+}
+
+#giftname_2{
+position: relative;
+width: 155px;
+height: 21px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+text-align: center;
+color: #FFFFFF;
+margin-left: calc(50% - 155px / 2 - 2.5px);
+}
+
+
+
+
+
+
+.spinner-spinning {
+    animation: wheelSpin 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes wheelSpin {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    20% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+    40% {
+        transform: translateX(-50%) rotate(720deg);
+    }
+    60% {
+        transform: translateX(-50%) rotate(1080deg);
+    }
+    80% {
+        transform: translateX(-50%) rotate(1260deg);
+    }
+    100% {
+        transform: translateX(-50%) rotate(1440deg);
+    }
+}
+
+
+.spinner-track {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.spinner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden; /* Это обрежет все что выходит за круг */
+    pointer-events: none;
+    z-index: 200;
+}
+
+.spinner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 45px;
+    /* Центр вращения = центр круга = 140px от верха */
+    transform-origin: 50% 140px; 
+    transform: translateX(-50%) rotate(0deg);
+    z-index: 103;
+}
+
+.spinner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 45px;
+    background: #D9D9D9;
+    transform: translateX(-50%);
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+.liquidGlass-wrapper_gift_pricer_our {
+  position: relative;
+  
+  display: flex;
+    
+  overflow: hidden;
+  color: black;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect_gift_pricer_our {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  margin-left: 2px;
+  overflow: hidden;
+  isolation: isolate;
+
+    display: flex;
+   align-items: center;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 9px;
+line-height: 11px;
+text-align: center;
+color: #FFFFFF;
+}
+
+.liquidGlass-tint_gift_pricer_our {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+
+  background: #000000;
+  opacity: 0.1;
+}
+
+.liquidGlass-shine_gift_pricer_our {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+
+  box-shadow: inset 0.7px 0.3px 0.1px -0.2px rgb(174, 240, 248),
+    inset -0.7px -0.3px 0.1px -0.1px rgb(174, 240, 248);
+}
+.wrapper_gift_pricer_our {
+  position: relative;
+  display: flex;
+  margin-top: -75px;
+  margin-right: 4px;
+  gap: 25px;
+  flex-direction: column;
+z-index: 100;
+  justify-content: center;
+  align-items: flex-end;
+}
+.button_gift_pricer_our {
+width: 35px;
+  height: 15px;
+
+  border-radius: 24px;
+}
+
+.button_gift_pricer_our,
+.button_gift_pricer_our > div {
+
+  border-radius: 24px;
+}
